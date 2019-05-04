@@ -1,0 +1,20 @@
+- model: deals.categories
+  pk: 1
+  fields:
+    name: Ticketr Basic
+    slug: ticketr-basic
+- model: deals.categories
+  pk: 2
+  fields:
+    name: Ticketr Classic
+    slug: ticketr-classic
+- model: deals.categories
+  pk: 3
+  fields:
+    name: Ticketr Luxe
+    slug: ticketr-luxe
+- model: deals.categories
+  pk: 4
+  fields:
+    name: Ticketr Luxe Plus
+    slug: ticketr-luxe-plus
