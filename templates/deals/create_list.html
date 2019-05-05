@@ -1,0 +1,8 @@
+{% block content %}
+    <h2>Create Deal Options</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ formset.as_p }}
+        <button type="submit">Create Deal Options</button>
+    </form>
+{% endblock %}

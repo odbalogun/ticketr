@@ -59,7 +59,9 @@ ROOT_URLCONF = 'ticketr.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,3 +127,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/users/'
+
+# path to media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

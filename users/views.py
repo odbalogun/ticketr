@@ -1,16 +1,19 @@
 from django.views.generic import FormView, CreateView, ListView
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from .forms import UserModelForm
 from .models import User
 
 
-class LoginView(FormView):
-    form_class = AuthenticationForm
+class CustomLoginView(LoginView):
     template_name = "users/login.html"
     success_url = settings.LOGIN_REDIRECT_URL
+
+
+class CustomLogoutView(LogoutView):
+    template_name = 'registration/logged_out.html'
 
 
 class UserListView(ListView):
