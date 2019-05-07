@@ -11,3 +11,9 @@ class Discounts(SafeDeleteModel):
     expiry_date = models.DateField('expiry date')
     is_active = models.BooleanField('is active', default=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    @property
+    def display_discount(self):
+        if self.percentage:
+            return "{}%".format(self.percentage)
+        return "N{}".format(self.amount)
