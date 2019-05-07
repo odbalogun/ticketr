@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import DiscountCreateView, DiscountListView, DiscountDeleteView, DiscountDetailView, DiscountUpdateView
 
-app_name = 'deals'
+app_name = 'discounts'
 
 urlpatterns = [
     path('', DiscountListView.as_view(), name='list'),
