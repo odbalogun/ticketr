@@ -9,7 +9,7 @@ def deals_image_path(instance, filename):
     return 'images/deals/{0}/{1}'.format(instance.deal.pk, filename)
 
 
-class Categories(SafeDeleteModel, models.Model):
+class Categories(SafeDeleteModel):
     name = models.CharField('name', max_length=100, unique=True)
     slug = models.SlugField('slug', max_length=100, unique=True)
 
@@ -22,7 +22,7 @@ class Categories(SafeDeleteModel, models.Model):
         super(Categories, self).save(*args, **kwargs)
 
 
-class Deals(SafeDeleteModel, models.Model):
+class Deals(SafeDeleteModel):
     name = models.CharField('name', max_length=100, unique=True)
     slug = models.SlugField('slug', max_length=100, unique=True)
     description = models.TextField('description', null=False)
@@ -40,7 +40,7 @@ class Deals(SafeDeleteModel, models.Model):
         super(Deals, self).save(*args, **kwargs)
 
 
-class DealCategories(SafeDeleteModel, models.Model):
+class DealCategories(SafeDeleteModel):
     price = models.DecimalField('price', decimal_places=2, max_digits=10)
     description = models.TextField('description')
     image = models.ImageField('image', upload_to=deals_image_path)
