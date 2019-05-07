@@ -1,7 +1,12 @@
 {% block content %}
+    <br/>
     <ul>
         {% for item in object_list %}
-            <li>{{ item.name }} - {{ item.options.count }}</li>
+            <li>{{ item.pk }} - {{ item.name }} - {{ item.options.count }}</li>
+        {% empty %}
+            <li>No deals found</li>
         {% endfor %}
     </ul>
+    <hr/>
+    <a href="{% url 'deals:create' %}">Create new deal</a>
 {% endblock %}

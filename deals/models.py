@@ -6,7 +6,7 @@ from django.conf import settings
 
 def deals_image_path(instance, filename):
     # for file uploads
-    return 'images/deals/{0}/{1}'.format(instance.id, filename)
+    return 'images/deals/{0}/{1}'.format(instance.deal.pk, filename)
 
 
 class Categories(SafeDeleteModel, models.Model):
@@ -30,7 +30,9 @@ class Deals(SafeDeleteModel, models.Model):
     expiry_date = models.DateField('expiry date', null=True)
     is_active = models.BooleanField('is active', default=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    options = models.ManyToManyField('Categories', through='DealCategories', through_fields=('deal', 'category'))
+
+    def __str__(self):
+        return self.name
 
     def save(self, *args, **kwargs):
         # Overwrite save to allow for slug creation
@@ -39,10 +41,13 @@ class Deals(SafeDeleteModel, models.Model):
 
 
 class DealCategories(SafeDeleteModel, models.Model):
-    price = models.FloatField('price')
+    price = models.DecimalField('price', decimal_places=2, max_digits=10)
     description = models.TextField('description')
     image = models.ImageField('image', upload_to=deals_image_path)
     quantity = models.IntegerField('quantity', null=True)
     available_quantity = models.IntegerField('available quantity', null=True)
-    deal = models.ForeignKey(Deals, on_delete=models.CASCADE)
+    deal = models.ForeignKey(Deals, on_delete=models.CASCADE, related_name='options')
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('category', 'deal')

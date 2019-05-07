@@ -124,3 +124,9 @@ dmypy.json
 
 # Pycharm settings
 .idea/
+
+# exclude uploaded image files
+/media/images/deals/*
+
+# include .gitkeep files to track folder structure
+!/media/images/deals/*.gitkeep

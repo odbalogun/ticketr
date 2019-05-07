@@ -1,4 +1,4 @@
-from django.views.generic import FormView, CreateView, ListView
+from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
