@@ -2,24 +2,15 @@
     <br/>
     {% if object %}
         <ul>
-            <li>Name: {{ object.name }}</li>
-            <li>Slug: {{ object.slug }}</li>
-            <li>Description: {{ object.description }}</li>
+            <li>Discount Code: {{ object.code }}</li>
+            <li>Discount: {{ object.display_discount }}</li>
             <li>Created at: {{ object.created_at }}</li>
             <li>Expiry date: {{ object.expiry_date }}</li>
             <li>Active: {{ object.is_active }}</li>
-
+            <li>Created By: {{ object.created_by }}</li>
             <hr/>
-            <h4>Options:</h4>
-            <ul>
-                {% for item in object.options.all %}
-                    <li>{{ item.category }} - {{ item.price }}</li>
-                {% empty %}
-                    <li>No options found</li>
-                {% endfor %}
-            </ul>
         </ul>
     {% else %}
-        <p>No object found. Go back to <a href="{% url 'list' %}">list</a>page</p>
+        <p>No objects found. Go back to <a href="{% url 'list' %}">list</a>page</p>
     {% endif %}
 {% endblock %}

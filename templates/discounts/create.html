@@ -1,8 +1,9 @@
 {% block content %}
-    <h2>Create Deal</h2>
+    <br/>
+    <h2>Create Discount</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Create Deal</button>
+        <button type="submit">Create Discount</button>
     </form>
 {% endblock %}

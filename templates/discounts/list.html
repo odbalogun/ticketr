@@ -2,11 +2,11 @@
     <br/>
     <ul>
         {% for item in object_list %}
-            <li>{{ item.pk }} - {{ item.name }} - {{ item.options.count }}</li>
+            <li>{{ item.pk }} - {{ item.code }} - {{ item.display_discount }}</li>
         {% empty %}
-            <li>No deals found</li>
+            <li>No discounts found</li>
         {% endfor %}
     </ul>
     <hr/>
-    <a href="{% url 'deals:create' %}">Create new deal</a>
+    <a href="{% url 'discounts:create' %}">Create new discount</a>
 {% endblock %}
