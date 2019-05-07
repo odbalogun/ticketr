@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'safedelete',
     'users',
     'deals',
-    'discounts'
+    'discounts',
+    'talents'
 ]
 
 MIDDLEWARE = [
