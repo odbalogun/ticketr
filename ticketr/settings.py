@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'safedelete',
     'users',
-    'deals'
+    'deals',
+    'discounts'
 ]
 
 MIDDLEWARE = [
