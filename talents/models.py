@@ -13,6 +13,7 @@ class Bookings(SafeDeleteModel):
     other_details = models.TextField('other details', blank=True)
     resolution = models.TextField('resolved?', null=True, default=None)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    created_at = models.DateTimeField('created at', auto_now_add=True)
 
 
 class BookingTalents(SafeDeleteModel):

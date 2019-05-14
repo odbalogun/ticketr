@@ -1,0 +1,28 @@
+{% block content %}
+    <br/>
+    {% if object %}
+        <ul>
+            <li>Start date: {{ object.start_date_time }}</li>
+            <li>End date: {{ object.end_date_time }}</li>
+            <li>Budget from: {{ object.budget_from }}</li>
+            <li>Budget to: {{ object.budget_to }}</li>
+            <li>Engagement scope: {{ object.engagement_scope }}</li>
+            <li>Venue: {{ object.venue }}</li>
+            <li>Created by: {{ object.created_by }}</li>
+            <li>Created at: {{ object.created_at }}</li>
+            <li>Other details: {{ object.other_details }}</li>
+
+            <hr/>
+            <h4>Talents:</h4>
+            <ul>
+                {% for item in object.talents.all %}
+                    <li>{{ item.name }} - {{ item.industry }}</li>
+                {% empty %}
+                    <li>No options found</li>
+                {% endfor %}
+            </ul>
+        </ul>
+    {% else %}
+        <p>No objects found. Go back to <a href="{% url 'talents:list-bookings' %}">list</a>page</p>
+    {% endif %}
+{% endblock %}
