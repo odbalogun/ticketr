@@ -1,0 +1,12 @@
+{% block content %}
+    <br/>
+    <ul>
+        {% for item in object_list %}
+            <li>{{ item.pk }} - {{ item.start_date_time }} - {{ item.end_date_time }}</li>
+        {% empty %}
+            <li>No bookings found</li>
+        {% endfor %}
+    </ul>
+    <hr/>
+    <a href="{% url 'talents:create-booking' %}">Create new booking</a>
+{% endblock %}
