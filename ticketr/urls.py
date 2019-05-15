@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from admin_interface.models import Theme
+
+# remove theme options from dashboard
+admin.site.unregister(Theme)
 
 # overwrite admin template variables
 admin.site.site_header = 'Ticketr Administration'                    # default: "Django Administration"
@@ -24,7 +28,7 @@ admin.site.index_title = 'Administration'                 # default: "Site admin
 admin.site.site_title = 'Ticketr site admin' # default: "Django site admin"
 
 urlpatterns = [
-    path('grappelli/', include('grappelli.urls')), # grappelli URLS
+    # path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     path('users/', include('users.urls', namespace='users')),
     path('deals/', include('deals.urls', namespace='deals')),
