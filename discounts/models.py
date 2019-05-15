@@ -20,3 +20,7 @@ class Discounts(SafeDeleteModel):
 
     def __str__(self):
         return self.code
+
+    class Meta:
+        verbose_name_plural = 'discounts'
+        verbose_name = 'discount'

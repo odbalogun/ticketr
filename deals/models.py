@@ -39,6 +39,10 @@ class Deals(SafeDeleteModel):
         self.slug = slugify(self.name)
         super(Deals, self).save(*args, **kwargs)
 
+    class Meta:
+        verbose_name_plural = 'deals'
+        verbose_name = 'deal'
+
 
 class DealCategories(SafeDeleteModel):
     price = models.DecimalField('price', decimal_places=2, max_digits=10)

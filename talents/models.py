@@ -17,6 +17,7 @@ class Bookings(SafeDeleteModel):
 
     class Meta:
         verbose_name_plural = 'bookings'
+        verbose_name = 'booking'
 
     @property
     def display_budget_from(self):
@@ -36,3 +37,4 @@ class BookingTalents(SafeDeleteModel):
 
     class Meta:
         verbose_name_plural = 'booking talents'
+        verbose_name = 'booking talent'
