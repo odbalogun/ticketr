@@ -18,6 +18,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# overwrite admin template variables
+admin.site.site_header = 'Ticketr Administration'                    # default: "Django Administration"
+admin.site.index_title = 'Administration'                 # default: "Site administration"
+admin.site.site_title = 'Ticketr site admin' # default: "Django site admin"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls', namespace='users')),

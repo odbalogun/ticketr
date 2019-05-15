@@ -12,6 +12,7 @@ class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField('last name', max_length=100)
     created_at = models.DateTimeField('date created', auto_now_add=True)
     is_active = models.BooleanField('active', default=True)
+    is_staff = models.BooleanField('is staff', default=False)
     is_admin = models.BooleanField('is admin', default=False)
 
     objects = UserManager()
@@ -22,6 +23,9 @@ class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
+
+    def __str__(self):
+        return self.get_full_name()
 
     def get_full_name(self):
         """
