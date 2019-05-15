@@ -24,6 +24,7 @@ admin.site.index_title = 'Administration'                 # default: "Site admin
 admin.site.site_title = 'Ticketr site admin' # default: "Django site admin"
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     path('users/', include('users.urls', namespace='users')),
     path('deals/', include('deals.urls', namespace='deals')),
