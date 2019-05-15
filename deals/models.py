@@ -49,9 +49,12 @@ class DealCategories(SafeDeleteModel):
     description = models.TextField('description')
     image = models.ImageField('image', upload_to=deals_image_path)
     quantity = models.IntegerField('quantity', null=True)
-    available_quantity = models.IntegerField('available quantity', null=True)
+    available_quantity = models.IntegerField('available quantity', null=True, default=0)
     deal = models.ForeignKey(Deals, on_delete=models.CASCADE, related_name='options')
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.category.name
 
     class Meta:
         unique_together = ('category', 'deal')

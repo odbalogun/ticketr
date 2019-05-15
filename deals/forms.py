@@ -7,6 +7,14 @@ DealCategoriesFormSet = inlineformset_factory(Deals, DealCategories, extra=4, ca
                                               fields=['price', 'description', 'image', 'quantity', 'category'])
 
 
+class DealCategoriesInlineFormSet(forms.models.BaseInlineFormSet):
+    model = DealCategories
+
+    def __init__(self, *args, **kwargs):
+        super(DealCategoriesInlineFormSet, self).__init__(*args, **kwargs)
+        self.initial = [{'category': 1}, {'category': 2}, {'category': 3}, {'category': 4}]
+
+
 class DealForm(forms.ModelForm):
     class Meta:
         model = Deals
