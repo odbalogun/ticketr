@@ -10,6 +10,7 @@ class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('email address', unique=True)
     first_name = models.CharField('first name', max_length=100)
     last_name = models.CharField('last name', max_length=100)
+    company = models.CharField('company', null=True, max_length=100)
     created_at = models.DateTimeField('date created', auto_now_add=True)
     is_active = models.BooleanField('active', default=True)
     is_staff = models.BooleanField('is staff', default=False)

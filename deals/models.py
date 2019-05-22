@@ -58,3 +58,5 @@ class DealCategories(SafeDeleteModel):
 
     class Meta:
         unique_together = ('category', 'deal')
+        verbose_name_plural = 'deal categories'
+        verbose_name = 'deal category'

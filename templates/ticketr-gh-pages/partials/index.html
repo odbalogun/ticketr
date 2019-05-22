@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js" lang="" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Eduplana</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css">
+
+        <link rel="stylesheet" href="assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="assets/css/swiper.min.css" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    </head>
+    <body ng-controller="generalController">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        
+        <div id="page-wrapper">
+
+            <!-- Header -->
+                <header id="header" class="">
+                    <div class="container clearfix">
+                        <div class="logo">
+                            <a ui-sref="home"><img src="images/logo.png" alt=""></a>
+                        </div>
+                        <nav id="nav">
+                            <ul>
+                                <li ng-class="{ current: isActive('/')}"><a ui-sref="home">Home</a></li>
+                                <li ng-class="{ current: isActive('/about')}"><a ui-sref="about">About Us</a></li>
+                                <!-- <li ng-class="{ current: isActive('/about')}" class="submenu">
+                                    <a ui-sref="about">About Us</a>
+                                    <ul>
+                                        <li><a ui-sref="ourSolution">Our Solutions</a></li>
+                                        <li><a href="right-sidebar.html">2017 Education Fund</a></li>
+                                        <li><a ui-sref="getInvolved">Get Involved</a></li>
+                                    </ul>
+                                </li> -->
+                                <li ng-class="{ current: isActive('/data')}"><a ui-sref="data">Data</a></li>
+                                <li ng-class="{ current: isActive('/infographics')}"><a ui-sref="infographics">Infographics</a></li>
+                                <li ng-class="{ current: isActive('/contact')}"><a ui-sref="contact">Contact</a></li>
+                                <!-- <li ng-class="{ current: isActive('/blog') || isActive('/blogDetails') || sActive('/qualityEducation') || sActive('/outOfSchoolProject') || sActive('/studentOnline') }"><a ui-sref="blog">Publications</a></li> -->
+                                <li><a target="_blank" href="https://medium.com/@eduplana_NG">Blog</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
+
+                
+                <div id="main">
+                    <div ui-view></div>
+                </div>
+                
+                <div class="space"></div>
+            <!-- Footer -->
+                <footer id="footer">
+
+                    <ul class="icons">
+                        <li><a href="https://twitter.com/eduplana_ng" target="_blank" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://www.facebook.com/Eduplana-Nigeria-787498974684285" target="_blank" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
+                        <li><a href="https://medium.com/@eduplana_NG" target="_blank" class="icon circle fa-medium"><span class="label">Instagram</span></a></li>
+                    </ul>
+
+                    <ul class="copyright">
+                        <li>
+                            <span class="fotIcon"><i class="fa fa-address-book" aria-hidden="true"></i></span>
+                            2nd Floor, Adepate House, 42, Montgomery Road, Yaba, Lagos State.                             <span class="fotIcon"><i class="fa fa-phone" aria-hidden="true"></i> (+234) 7062093584 
+                            <span class="fotIcon"><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@eduplana.com">info@eduplana.com</a>
+                        </li>
+                        <li>
+                            &copy; eduplana 
+                            <script>var currentYear = new Date().getFullYear();document.write(currentYear);</script>. 
+                            All Rights Reserved
+                        </li>
+                    </ul>
+
+                    <div class="text-center" style="display: none;">
+                        <a style="text-decoration: none; border: none;" href="http://yourbudgit.com/" target="_blank"><img style="width: 12%;" src="images/bugit-small.png" alt=""></a>
+                    </div>
+
+                </footer>
+
+        </div>
+
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/jquery.scrollgress.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/swiper.jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/angularjs/angular.min.js"></script>
+        <script src="assets/js/angularjs/angular-animate.js"></script>
+        <script src="assets/js/angularjs/angular-ui-router.min.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script src="assets/js/controllers/generalController.js"></script>
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/main.js"></script>
+
+
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            $(window).load(function() {
+
+                $("a.popup").fancybox({
+                    'transitionIn'  :   'elastic',
+                    'transitionOut' :   'elastic',
+                    'speedIn'       :   600, 
+                    'speedOut'      :   200, 
+                    'overlayShow'   :   false
+                });
+
+            });
+
+        </script>
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>
