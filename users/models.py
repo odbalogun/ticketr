@@ -26,7 +26,7 @@ class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = 'users'
 
     def __str__(self):
-        return self.get_full_name()
+        return self.company if self.company else self.get_full_name()
 
     def get_full_name(self):
         """

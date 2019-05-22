@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Discounts
+from .forms import DiscountForm
 
 
 # create admin models
@@ -7,6 +8,7 @@ class DiscountAdmin(admin.ModelAdmin):
     list_display = ('code', 'display_discount', 'expiry_date', 'is_active', 'created_by', 'created_at')
     list_filter = ('created_by', 'created_at')
     exclude = ('created_by', )
+    form = DiscountForm
 
     def save_model(self, request, obj, form, change):
         if getattr(obj, 'created_by', None) is None:
