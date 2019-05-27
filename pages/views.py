@@ -9,6 +9,9 @@ from events.models import Category as EventCategory, Event
 from users.models import User
 from users.forms import SignUpModelForm
 
+class TestPageView(TemplateView):
+    template_name = "pages/test.html"
+
 
 class HomePageView(TemplateView):
     template_name = "pages/index.html"

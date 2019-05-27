@@ -28,7 +28,7 @@ DEBUG = True
 # Configuration to use custom user model
 AUTH_USER_MODEL = 'users.User'
 
-ALLOWED_HOSTS = ['94.237.88.29', ]
+ALLOWED_HOSTS = ['94.237.88.29', 'localhost']
 
 
 # Application definition
