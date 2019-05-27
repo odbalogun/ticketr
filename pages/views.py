@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from django.contrib.auth import login
 from .forms import VerificationCodeForm
@@ -8,6 +9,7 @@ from deals.models import Deals
 from events.models import Category as EventCategory, Event
 from users.models import User
 from users.forms import SignUpModelForm
+
 
 class TestPageView(TemplateView):
     template_name = "pages/talent.html"
@@ -24,6 +26,24 @@ class HomePageView(TemplateView):
         }
 
         return render(request, 'pages/index.html', context)
+
+
+class LoginPageView(LoginView):
+    success_url = reverse_lazy("users:profile")
+    template_name = "pages/_login.html"
+
+    def get(self, request, *args, **kwargs):
+        return redirect(reverse_lazy("pages:home"))
+
+    def form_invalid(self, form):
+        # messages.error(self.request, "There were errors in your form")
+        messages.error(self.request, form.errors[0])
+        return redirect(reverse_lazy("pages:home"))
+
+
+class LogoutPageView(LogoutView):
+    template_name = 'pages/_logged_out.html'
+    success_url = reverse_lazy("users:home")
 
 
 class SignupPageView(FormView):
