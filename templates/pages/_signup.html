@@ -1,9 +1,10 @@
+{% load static %}
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="ticketr-signup">
             <div class="logo">
-                <img src="images/ticketr_logo_transparent.png" alt="">
+                <img src="{% static 'images/ticketr_logo_transparent.png' %}" alt="">
             </div>
             <div class="title">Sign up to start selling your tickets, in minutes!</div>
             <div class="form-content">
@@ -11,7 +12,7 @@
         {% csrf_token %}
         <div class="form-wrap">
             <label for="">Name of Partner</label>
-            <input type="text" name="company">
+            <input type="text" name="company" placeholder="Enter name of partner">
         </div>
         <!--
         <div class="form-wrap">
@@ -21,19 +22,19 @@
         -->
         <div class="form-wrap">
             <label for="">Business Phone Number</label>
-            <input type="text" name="phone">
+            <input type="text" name="phone" placeholder="Enter business phone number">
         </div>
         <div class="form-wrap">
             <label for="">Email</label>
-            <input type="email" name="email">
+            <input type="email" name="email" placeholder="Enter Email">
         </div>
         <div class="form-wrap">
             <label for="">Password</label>
-            <input type="password" name="password">
+            <input type="password" name="password" placeholder="Enter password">
         </div>
         <div class="form-wrap">
             <label for="">Website</label>
-            <input type="text" name="website">
+            <input type="text" name="website" placeholder="Enter website">
         </div>
         <button type="submit">Create account</button>
     </form>
