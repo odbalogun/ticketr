@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pagecontent %}
+    <section class="banner" style="background-image: url('{% static "images/b2.jpg" %}')">
+        <div class="overlay">
+            <div class="container">
+                <div class="first"><strong>Connecting people</strong> together <br>through <strong>real life experiences.</strong> </div><br/>
+            </div>
+        </div>
+    </section>
+
+    <section class="search">
+        <div class="container">
+            <div class="search-wrap">
+                <form action="">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-wrap">
+                                        <label for="">Search event</label>
+                                        <input type="text" placeholder="Search event">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-wrap">
+                                        <label for="">Search deal</label>
+                                        <input type="text" placeholder="Search deal">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-wrap last">
+                                        <label for="">Search location</label>
+                                        <input type="text" placeholder="Search location">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <button>Go</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    {% if events %}
+    <section class="content">
+        <div class="container">
+            <div class="title">
+                <div class="line"></div>
+                <div class="text">all the <span class="italic">hottest</span> tickets in on spot</div>
+                <div class="line"></div>
+            </div>
+            <div class="cards">
+                <div class="row">
+                    {% for event in events %}
+                    <div class="col-md-3">
+                        <div class="card-wrap">
+                            <div class="card-img" style="background-image: url('{{ event.image }}')"></div>
+                            <div class="card-title">{{ event.title }}</div>
+                            <div class="description">
+                                {{ event.start_date_time }} till {{ event.end_date_time }} {{ event.venue.name }} {{ event.venue.city }}
+                            </div>
+                            {% for ticket in event.tickets %}
+                            <div class="price">
+                                <strong>{{ ticket.name }}:</strong> N{{ ticket.price }}
+                            </div>
+                            {% endfor %}
+                            <a class="read-more" href="{{ event.get_absolute_url }}">Read More</a>
+                            <div class="btn-wrap">
+                                <a ui-sref="singleEvent" class="buy">Buy Ticket</a>
+                                <a ui-sref="/" class="buy">Share Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="more-content">
+                <button>More</button>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if deal %}
+    <section class="content explore">
+        <div class="container">
+            <div class="title">
+                <div class="line"></div>
+                <div class="text">explore our deals for more</div>
+                <div class="line"></div>
+            </div>
+            <div class="cards">
+                <div class="row">
+                    {% for cat in deal.options.all %}
+                    <div class="col-md-3">
+                        <div class="card-wrap">
+                            <div class="card-img" style="background-image: url('images/2.jpg')"></div>
+                            <div class="card-title">Explore the city with our <strong>{{ cat.category.name }}</strong></div>
+                            <div class="description">
+                                {{ cat.summary }}
+                            </div>
+
+                            <a class="read-more" href="#">Read More</a>
+                            <div class="btn-wrap">
+                                <button class="buy">Book now</button>
+                            <button class="buy">Share Details</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="more-content">
+                <button>More</button>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if categories %}
+    <section class="discover-more">
+        <div class="container">
+            <div class="title">
+                <div class="line"></div>
+                <div class="text">discover more</div>
+                <div class="line"></div>
+            </div>
+            <div class="cards">
+                <div class="row">
+                    {% for cat in categories %}
+                    <div class="col-md-4">
+                        <div class="card-wrap">
+                            <div class="card-img" style="background-image: url('{{ cat.image }}')">
+                                <div class="overlay">
+                                    <div class="card-title">{{ cat.name }}</div>
+                                    <div class="description">
+                                        {{ cat.short_description }}
+                                    </div>
+
+                                    <button class="buy">Buy tickets</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!--
+    <section class="newsletter">
+        <div class="container">
+            <div class="text">
+                Stay connected to us to know more about upcoming events, news updates, giveaways and more
+            </div>
+            <div class="form">
+                <form action="">
+                    <input type="text" placeholder="Enter your email here">
+                </form>
+            </div>
+        </div>
+    </section>
+    -->
+
+{% endblock %}

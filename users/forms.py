@@ -13,3 +13,16 @@ class UserModelForm(forms.ModelForm):
         fields = [
             'first_name', 'last_name', 'email', 'password'
         ]
+
+
+class SignUpModelForm(forms.ModelForm):
+    company = forms.CharField(required=True)
+    phone = forms.CharField(required=True)
+    email = forms.EmailField(required=True)
+    password = forms.CharField(required=True, widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = [
+            'company', 'phone', 'email', 'password', 'website'
+        ]

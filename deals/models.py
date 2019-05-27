@@ -56,6 +56,10 @@ class DealCategories(SafeDeleteModel):
     def __str__(self):
         return self.category.name
 
+    @property
+    def summary(self):
+        return self.description[:50]
+
     class Meta:
         unique_together = ('category', 'deal')
         verbose_name_plural = 'deal categories'

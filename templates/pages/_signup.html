@@ -1,0 +1,53 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="ticketr-signup">
+            <div class="logo">
+                <img src="images/ticketr_logo_transparent.png" alt="">
+            </div>
+            <div class="title">Sign up to start selling your tickets, in minutes!</div>
+            <div class="form-content">
+    <form action="{% url 'pages:signup' %}" method="post">
+        {% csrf_token %}
+        <div class="form-wrap">
+            <label for="">Name of Partner</label>
+            <input type="text" name="company">
+        </div>
+        <!--
+        <div class="form-wrap">
+            <label for="">Business Address</label>
+            <textarea name="address"></textarea>
+        </div>
+        -->
+        <div class="form-wrap">
+            <label for="">Business Phone Number</label>
+            <input type="text" name="phone">
+        </div>
+        <div class="form-wrap">
+            <label for="">Email</label>
+            <input type="email" name="email">
+        </div>
+        <div class="form-wrap">
+            <label for="">Password</label>
+            <input type="password" name="password">
+        </div>
+        <div class="form-wrap">
+            <label for="">Website</label>
+            <input type="text" name="website">
+        </div>
+        <button type="submit">Create account</button>
+    </form>
+</div>
+            <div class="terms">
+                BY CREATING AN ACCOUNT, YOU AGREE TO THE TICKETR SERVICES AGREEMENT AND <a href="#"> <strong>TERMS OF SERVICE</strong> </a>
+            </div>
+            <div class="with-account">
+                Already registered? Please <a class="button" href="#">Sign in</a>
+            </div>
+            <div class="without-account">
+                Looking to buy tickets? lets <a class="button" href="#">Shop tickets</a>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

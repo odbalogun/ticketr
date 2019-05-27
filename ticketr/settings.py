@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'deals',
     'discounts',
     'talents',
-    'events'
+    'events',
+    'pages'
 ]
 
 MIDDLEWARE = [
@@ -131,6 +132,14 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Tell Django where to find static files
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 LOGIN_REDIRECT_URL = '/users/'
 

@@ -1,0 +1,160 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{% block ticketr %}ticketr {% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+
+    </head>
+    <body ng-controller="generalController">
+        <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+        <div id="page-wrapper">
+
+            <!-- Header -->
+                <header class="home">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <a class="logo" ui-sref="home"><img src="{% static 'images/ticketr_logo_transparent.png' %}" alt=""></a>
+                            </div>
+                            <div class="col-md-9">
+                                <nav>
+                                    <ul class="d-none d-lg-block">
+                                        <li ng-class="{ active: isActive('/event')}"><a ui-sref="event">Event tickets</a></li>
+                                        <li ng-class="{ active: isActive('/movies')}"><a ui-sref="movies">Movies tickets</a></li>
+                                        <li ng-class="{ active: isActive('/buy-a-deal')}"><a ui-sref="BuyAdeal">Buy a deal</a></li>
+                                        <li ng-class="{ active: isActive('/book-a-talent')}"><a ui-sref="BookAtalent">Book a talent</a></li>
+                                        <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#exampleModal" href="javascript:void(0)">Sign up</a></li>
+                                        <li ng-class="{ active: isActive('//create-event')}" class="create"><a ui-sref="CreateEvent">Create Event</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="d-md-none menu-icon"><span><i class="fas fa-bars"></i></span></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="mobile-menu-wrap home d-md-none">
+                    <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <ul>
+                        <li><a class="close-me clearfix animate bounceIn"  ui-sref="home"><span class="text">Home</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  ui-sref="event"><span class="text">Event tickets</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  ui-sref="movies"><span class="text">Movies tickets</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  ui-sref="BuyAdeal"><span class="text">Buy a deal</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  ui-sref="BookAtalent"><span class="text">Book a talent</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn" data-toggle="modal" data-target="#exampleModal"  href="javascript:void(0)"><span class="text">Sign up</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  ui-sref="CreateEvent"><span class="text">Create Event</span></a></li>
+                    </ul>
+                </div>
+
+                <div id="main">
+                    <div ui-view>
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {% block pagecontent %}{% endblock %}
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <div class="subfooter">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    Need to <strong>book a talent</strong> for your event? <span><strong> <a class="click-here" href="#">Click here.</a></strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="copywrite">
+                                    <i class="far fa-copyright"></i> Ticketr <script>document.write(new Date().getFullYear())</script>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <ul class="footer-link">
+                                    <li><a href="javascript:void(0)">About Ticketr</a></li>
+                                    <li><a href="javascript:void(0)">Careers</a></li>
+                                    <li><a href="javascript:void(0)">Terms</a></li>
+                                    <li><a href="javascript:void(0)">Contact</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="col-md-2">
+                                <ul class="payment-icon">
+                                    <li><img src="{% static 'images/visa.png' %}" alt="visa"></li>
+                                    <li><img src="{% static 'images/mastercard.png' %}" alt="master card"></li>
+                                    <li><img src="{% static 'images/verve.png' %}" alt="verve"></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <ul class="social-link">
+                                    <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="javascript:void(0)"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </footer>
+
+        </div>
+
+        {% include "pages/_signup.html" %}
+
+        <script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'assets/js/lightgallery-all.min.js' %}"></script>
+        <script src="{% static 'assets/js/angularjs/angular.min.js' %}"></script>
+        <script src="{% static 'assets/js/angularjs/angular-animate.js' %}"></script>
+        <script src="{% static 'assets/js/angularjs/angular-ui-router.min.js' %}"></script>
+        <script src="{% static 'assets/js/app.js' %}"></script>
+        <script src="{% static 'assets/js/controllers/generalController.js' %}"></script>
+        <script src="{% static 'assets/js/main.js' %}"></script>
+
+        <script>
+        
+            $(".menu-icon").click(function(){
+                    $(".mobile-menu-wrap").show()
+                });
+
+            $(".mobile-menu-wrap .cancel, .close-me",).click(function(){
+                $(".mobile-menu-wrap").hide(500)
+            });
+        
+        </script>
+
+    </body>
+</html>

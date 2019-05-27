@@ -1,7 +1,8 @@
 from django.urls import path
-# from .views import DealCreateView, DealListView, manage_deal_categories, DealDeleteView, DealDetailView, DealUpdateView
+from .views import EventCreateView
 
 app_name = 'events'
 
 urlpatterns = [
+    path('create/', EventCreateView.as_view(), name='create'),
 ]

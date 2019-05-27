@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+
+{% block pagecontent %}
+    <h1>My Profile</h1>
+    {% if object %}
+    <ul>
+        <li>Email: {{ object.email }}</li>
+        <li>Business Name: {{ object.company }}</li>
+        <li>Created at: {{ object.created_at }}</li>
+        <li>Is staff: {{ object.is_staff }}</li>
+        <li>Is active: {{ object.is_active }}</li>
+        <li>Is admin: {{ object.is_admin }}</li>
+    </ul>
+    <hr/>
+    <h2>Events</h2>
+        {% if object.events %}
+            {% for event in object.events %}
+                <li>{{ event }}</li>
+            {% endfor %}
+        {% endif %}
+        <p><a href="{% url 'events:create' %}">Create event</a></p>
+    {% else %}
+        <p>No object found</p>
+    {% endif %}
+{% endblock %}

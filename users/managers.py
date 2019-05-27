@@ -14,6 +14,8 @@ class UserManager(SafeDeleteManager, BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
+        if not user.is_active:
+            user.set_verification_code()
         user.save(using=self._db)
         return user
 

@@ -1,17 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
+from django.core.mail import send_mail
 from safedelete.models import SafeDeleteModel
 
 from .managers import UserManager
+import random
+import string
 
 
 class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('email address', unique=True)
-    first_name = models.CharField('first name', max_length=100)
-    last_name = models.CharField('last name', max_length=100)
-    company = models.CharField('company', null=True, max_length=100)
+    first_name = models.CharField('first name', max_length=100, null=True)
+    last_name = models.CharField('last name', max_length=100, null=True)
+    company = models.CharField('partner name', null=True, max_length=100)
+    address = models.TextField('business address', null=True, blank=True)
+    phone = models.CharField('business phone number', null=True, max_length=50)
+    website = models.CharField('website', null=True, max_length=50, blank=True)
     created_at = models.DateTimeField('date created', auto_now_add=True)
+    verification_code = models.CharField('verification code', max_length=50, null=True)
     is_active = models.BooleanField('active', default=True)
     is_staff = models.BooleanField('is staff', default=False)
     is_admin = models.BooleanField('is admin', default=False)
@@ -32,6 +39,9 @@ class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
         """
         Returns the first_name plus the last_name, with a space in between.
         """
+        if self.company:
+            return self.company
+
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
 
@@ -49,3 +59,10 @@ class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
             "first_name": self.first_name,
             "last_name": self.last_name
         }
+
+    def set_verification_code(self, length=8):
+        self.verification_code = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(length))
+
+    def email_user(self, subject, message, from_email=None, **kwargs):
+        """Send an email to this user."""
+        send_mail(subject, message, from_email, [self.email], fail_silently=True, **kwargs)
