@@ -28,7 +28,7 @@ DEBUG = True
 # Configuration to use custom user model
 AUTH_USER_MODEL = 'users.User'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['94.237.88.29', ]
 
 
 # Application definition
@@ -138,7 +138,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 
 LOGIN_REDIRECT_URL = '/users/'

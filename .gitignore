@@ -127,6 +127,9 @@ dmypy.json
 
 # exclude uploaded image files
 /media/images/deals/*
+/media/images/events/*
+staticfiles/
 
 # include .gitkeep files to track folder structure
 !/media/images/deals/*.gitkeep
+!/media/images/events/*.gitkeep

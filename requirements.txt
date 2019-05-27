@@ -1,0 +1,10 @@
+Django==2.2.1
+django-admin-interface==0.10.5
+django-colorfield==0.1.15
+django-flat-responsive==2.0
+django-flat-theme==1.1.4
+django-safedelete==0.5.1
+Pillow==6.0.0
+pytz==2019.1
+PyYAML==5.1
+sqlparse==0.3.0
