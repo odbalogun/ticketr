@@ -34,16 +34,17 @@
                 <header class="home">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <a class="logo" ui-sref="home"><img src="{% static 'images/ticketr_logo_transparent.png' %}" alt=""></a>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-10">
                                 <nav>
                                     <ul class="d-none d-lg-block">
                                         <li ng-class="{ active: isActive('/event')}"><a ui-sref="event">Event tickets</a></li>
                                         <li ng-class="{ active: isActive('/movies')}"><a ui-sref="movies">Movies tickets</a></li>
                                         <li ng-class="{ active: isActive('/buy-a-deal')}"><a ui-sref="BuyAdeal">Buy a deal</a></li>
                                         <li ng-class="{ active: isActive('/book-a-talent')}"><a ui-sref="BookAtalent">Book a talent</a></li>
+                                        <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Login</a></li>
                                         <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#exampleModal" href="javascript:void(0)">Sign up</a></li>
                                         <li ng-class="{ active: isActive('//create-event')}" class="create"><a ui-sref="CreateEvent">Create Event</a></li>
                                     </ul>
@@ -64,6 +65,7 @@
                         <li><a class="close-me clearfix animate bounceIn"  ui-sref="movies"><span class="text">Movies tickets</span></a></li>
                         <li><a class="close-me clearfix animate bounceIn"  ui-sref="BuyAdeal"><span class="text">Buy a deal</span></a></li>
                         <li><a class="close-me clearfix animate bounceIn"  ui-sref="BookAtalent"><span class="text">Book a talent</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn" data-toggle="modal" data-target="#loginModal"  href="javascript:void(0)"><span class="text">Log in</span></a></li>
                         <li><a class="close-me clearfix animate bounceIn" data-toggle="modal" data-target="#exampleModal"  href="javascript:void(0)"><span class="text">Sign up</span></a></li>
                         <li><a class="close-me clearfix animate bounceIn"  ui-sref="CreateEvent"><span class="text">Create Event</span></a></li>
                     </ul>
@@ -133,15 +135,43 @@
 
         {% include "pages/_signup.html" %}
 
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="ticketr-signup">
+                    <div class="logo">
+                        <img src="{% static 'images/ticketr_logo_transparent.png' %}" alt="">
+                        
+                    </div>
+                    <div class="title">Login and start selling your tickets, in minutes!</div>
+                    <div class="form-content">
+            <form action="" method="post">
+                <div class="form-wrap">
+                    <label for="">Email</label>
+                    <input type="text" name="email" placeholder="Enter your email">
+                </div>
+                    <div class="form-wrap">
+                        <label for="">Password</label>
+                        <input type="password" name="password" placeholder="Enter your password">
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div><br><br>
+                    <div class="with-account">
+                        Don't have an account? Please <a class="button" href="#">Sign up</a>
+                    </div>
+                    <div class="without-account">
+                        Looking to buy tickets? lets <a class="button" href="#">Shop tickets</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
         <script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
         <script src="{% static 'assets/js/popper.min.js' %}"></script>
         <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/js/lightgallery-all.min.js' %}"></script>
-        <script src="{% static 'assets/js/angularjs/angular.min.js' %}"></script>
-        <script src="{% static 'assets/js/angularjs/angular-animate.js' %}"></script>
-        <script src="{% static 'assets/js/angularjs/angular-ui-router.min.js' %}"></script>
-        <script src="{% static 'assets/js/app.js' %}"></script>
-        <script src="{% static 'assets/js/controllers/generalController.js' %}"></script>
         <script src="{% static 'assets/js/main.js' %}"></script>
 
         <script>

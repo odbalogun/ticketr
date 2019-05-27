@@ -1,12 +1,40 @@
-{% extends '_base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block pagecontent %}
-<h1>Verify email:</h1>
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Verify email</button>
-</form>
+
+
+<div class="create-event" style="margin: 7rem 0 11rem 0;">
+    <div class="container">
+ 
+      <form action="" method="POST">
+            {% csrf_token %}
+        <div class="form-info-sec">
+            <div class="main-wrapper" style="margin-bottom: 0;">
+              <div class="row">
+                  <div class="col-md-6 offset-md-3">
+                        <div class="form-title text-center">
+                                Verify email
+                              </div>
+                              <div class="col-md-12 p-0">
+                                <div class="form-caption text-center">
+                                  You should receive an email with a verification code, enter the code below to proceed
+                                </div>
+                              </div>
+                              <div class="form-wrap" style="height: 5rem; border: 2px solid rgba(0, 0, 0, 0.2);">
+                                {{ form.as_p }}
+                        </div>
+                  </div>
+              </div>    
+            </div>
+          <div class="row">
+              <div class="col-md-6 offset-md-3">
+                  <button type="submit">Verify email</button>
+              </div>
+          </div>
+        </div>
+      </form>
+  </div>
+
 
 {% endblock %}
