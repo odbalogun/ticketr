@@ -45,7 +45,7 @@
                                         <li ng-class="{ active: isActive('/movies')}"><a href="movies">Movies tickets</a></li>
                                         <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="BuyAdeal">Buy a deal</a></li>
                                         <li ng-class="{ active: isActive('/book-a-talent')}"><a href="BookAtalent">Book a talent</a></li>
-                                        {% if request.user.is_authenticated %}
+                                        {% if not request.user.is_authenticated %}
                                             <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Login</a></li>
                                             <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#exampleModal" href="javascript:void(0)">Sign up</a></li>
                                         {% else %}

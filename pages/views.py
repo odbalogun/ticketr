@@ -9,6 +9,7 @@ from deals.models import Deals
 from events.models import Category as EventCategory, Event
 from users.models import User
 from users.forms import SignUpModelForm
+from django.conf import settings
 
 
 class TestPageView(TemplateView):
@@ -29,7 +30,8 @@ class HomePageView(TemplateView):
 
 
 class LoginPageView(LoginView):
-    success_url = reverse_lazy("users:profile")
+    # success_url = reverse_lazy("users:profile")
+    success_url = settings.LOGIN_REDIRECT_URL
     template_name = "pages/_login.html"
 
     def get(self, request, *args, **kwargs):
@@ -37,13 +39,14 @@ class LoginPageView(LoginView):
 
     def form_invalid(self, form):
         # messages.error(self.request, "There were errors in your form")
-        messages.error(self.request, form.errors[0])
+        key, value = form.errors.popitem()
+        messages.error(self.request, "{}: {}".format(key, value))
         return redirect(reverse_lazy("pages:home"))
 
 
 class LogoutPageView(LogoutView):
-    template_name = 'pages/_logged_out.html'
-    success_url = reverse_lazy("users:home")
+    template_name = 'pages/_logout.html'
+    next_page = reverse_lazy("pages:home")
 
 
 class SignupPageView(FormView):
