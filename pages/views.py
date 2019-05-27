@@ -10,7 +10,7 @@ from users.models import User
 from users.forms import SignUpModelForm
 
 class TestPageView(TemplateView):
-    template_name = "pages/test.html"
+    template_name = "pages/talent.html"
 
 
 class HomePageView(TemplateView):
