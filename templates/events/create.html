@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pagecontent %}
+    <section class="banner d-none d-lg-block" style="background-image: url('{% static 'images/banner4.jpg' %}')">
+    </section>
+    <div class="create-event">
+      <div class="container">
+        <div class="title">
+          From <strong>music festivals</strong> to <strong>conventions</strong>,
+          <strong>fashion runways</strong> to <strong>travel deals,</strong> we sell
+          them all!
+        </div>
+        <div class="caption">
+          Get started in minutes
+        </div>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-info-sec">
+              <div class="main-wrapper">
+                <div class="form-title">
+                  Basic Details
+                </div>
+                <div class="col-md-8 p-0">
+                  <div class="form-caption">
+                    Name your event and tell event-goers why they should come. Add
+                    details that highlight what makes it unique
+                  </div>
+                </div>
+                <div class="form-wrap">
+                  <label for="">Event Title</label>
+                  <!--<input type="text" placeholder="Be clear and descriptive" name="title" />-->
+                  {{ form.title }}
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-wrap">
+                      <label for="">Event Category</label>
+                      {{ form.category }}
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-wrap">
+                      <label for="">Organizer</label>
+                      {{ form.organizer_name }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="main-wrapper">
+                <div class="form-title">
+                  Location
+                </div>
+                <div class="col-md-8 p-0">
+                  <div class="form-caption">
+                    Help people in the area discover your event and let attendees know
+                    where to show up.
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-wrap">
+                      <label for="">Venue</label>
+                      {{ form.venue }}
+                    </div>
+                  </div>
+                </div>
+                <!--
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-wrap">
+                      <label for="">Search</label>
+                      <input type="text" placeholder="Search for a venue or address." />
+                    </div>
+                  </div>
+                </div>
+                -->
+              </div>
+
+              <div class="main-wrapper">
+                <div class="form-title">
+                  Date and time
+                </div>
+                <div class="col-md-8 p-0">
+                  <div class="form-caption">
+                    Tell event-goers when your event starts and ends so they can make
+                    plans to attend.
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <label for="">Event Starts</label>
+                      <input type="text" name="start_date" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <label for="">Start Time</label>
+                      <input type="text" name="start_time" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <label for="">Event Ends</label>
+                      <input type="text" name="end_date" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-wrap">
+                      <label for="">End Time</label>
+                      <input type="text" name="end_time" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="main-wrapper">
+                    <div class="form-title">
+                      Upload
+                    </div>
+                    <div class="col-md-8 p-0">
+                      <div class="form-caption">
+                        Please upload your event flyer here. Image should be 1080 by 1080px
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-wrap form-group">
+                                <label for="exampleFormControlFile1">Upload flyer</label>
+                                {{ form.image }}
+                        </div>
+                      </div>
+
+                  </div>
+            </div>
+
+            <div class="main-wrapper">
+                    <div class="form-title">
+                      Describe your event
+                    </div>
+                    <div class="col-md-8 p-0">
+                      <div class="form-caption">
+                        Let your guests know why they need to look forward to your event and be sure to get them excited!
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-wrap">
+                            {{ form.description }}
+                        </div>
+                      </div>
+
+                  </div>
+            </div>
+
+            <div class="main-wrapper">
+                <div class="form-title">
+                  Other details
+                </div>
+                <div class="col-md-8 p-0">
+                  <div class="form-caption">
+                    Who is speaking? Who is performing? Guest appearances? Giveaways?
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-wrap">
+                        {{ form.other_details }}
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+
+            <div class="main-wrapper">
+                <div class="form-title">
+                  Tickets
+                </div>
+                {% for ticket in formset %}
+                    <div class="col-md-8 p-0">
+                      <div class="form-caption">
+                        Enter ticket details
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-wrap">
+                            {{ ticket.name }}
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-wrap">
+                            {{ ticket.details }}
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-wrap">
+                            {{ ticket.price }}
+                        </div>
+                      </div>
+                        <div class="col-md-3">
+                        <div class="form-wrap">
+                            {{ ticket.quantity }}
+                        </div>
+                      </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+          </div>
+        </form>
+    </div>
+{% endblock %}

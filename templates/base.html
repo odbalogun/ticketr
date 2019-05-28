@@ -41,17 +41,18 @@
                             <div class="col-md-10">
                                 <nav>
                                     <ul class="d-none d-lg-block">
-                                        <li ng-class="{ active: isActive('/event')}"><a href="event">Event tickets</a></li>
-                                        <li ng-class="{ active: isActive('/movies')}"><a href="movies">Movies tickets</a></li>
-                                        <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="BuyAdeal">Buy a deal</a></li>
-                                        <li ng-class="{ active: isActive('/book-a-talent')}"><a href="BookAtalent">Book a talent</a></li>
+                                        <li ng-class="{ active: isActive('/event')}"><a href="#">Event tickets</a></li>
+                                        <li ng-class="{ active: isActive('/movies')}"><a href="#">Movies tickets</a></li>
+                                        <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="{% url 'deals:list' %}">Buy a deal</a></li>
+                                        <li ng-class="{ active: isActive('/book-a-talent')}"><a href="{% url 'talents:create-booking' %}">Book a talent</a></li>
                                         {% if not request.user.is_authenticated %}
                                             <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Login</a></li>
                                             <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#exampleModal" href="javascript:void(0)">Sign up</a></li>
+                                            <li ng-class="{ active: isActive('//create-event')}" class="create"><a data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Create Event</a></li>
                                         {% else %}
                                             <li ng-class="{ active: isActive('/book-a-talent')}"><a href="{% url 'pages:logout' %}">Logout</a></li>
+                                            <li ng-class="{ active: isActive('//create-event')}" class="create"><a href="{% url 'events:create' %}">Create Event</a></li>
                                         {% endif %}
-                                        <li ng-class="{ active: isActive('//create-event')}" class="create"><a href="CreateEvent">Create Event</a></li>
                                     </ul>
                                     <ul>
                                         <li class="d-md-none menu-icon"><span><i class="fas fa-bars"></i></span></li>

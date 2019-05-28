@@ -55,12 +55,13 @@ class Venue(SafeDeleteModel):
 
 
 class Event(SafeDeleteModel):
-    title = models.CharField('title', max_length=100, unique=True)
+    title = models.CharField('title', max_length=100)
     slug = models.SlugField('slug', max_length=100, unique=True)
     description = models.TextField('description', null=False)
     other_details = models.TextField('other details', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, related_name='events', null=True)
     created_at = models.DateTimeField('created at', auto_now_add=True)
+    organizer_name = models.CharField('organizer', max_length=100, null=True, blank=True)
     organizer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     venue = models.ForeignKey(Venue, on_delete=models.SET_NULL, null=True, related_name='events')
     start_date = models.DateField('event starts')
@@ -68,6 +69,11 @@ class Event(SafeDeleteModel):
     end_date = models.DateField('event ends')
     end_time = models.TimeField('end time')
     image = models.ImageField('image', upload_to=event_image_path)
+
+    def save(self, *args, **kwargs):
+        # Overwrite save to allow for slug creation
+        self.slug = slugify(self.title)
+        super(Event, self).save(*args, **kwargs)
 
     @property
     def start_date_time(self):
@@ -82,8 +88,11 @@ class Event(SafeDeleteModel):
 
 
 class Ticket(SafeDeleteModel):
-    name = models.CharField('name', max_length=100, unique=True)
+    name = models.CharField('name', max_length=100)
     details = models.TextField('details', null=True, blank=True)
     price = models.DecimalField('price', decimal_places=2, max_digits=10)
     quantity = models.IntegerField('qty', default=0)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='tickets')
+
+    class Meta:
+        unique_together = ('event', 'name')
