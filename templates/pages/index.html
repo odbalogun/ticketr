@@ -64,7 +64,7 @@
                             <div class="description">
                                 {{ event.start_date_time }} till {{ event.end_date_time }} {{ event.venue.name }} {{ event.venue.city }}
                             </div>
-                            {% for ticket in event.tickets %}
+                            {% for ticket in event.tickets.all %}
                             <div class="price">
                                 <strong>{{ ticket.name }}:</strong> N{{ ticket.price }}
                             </div>

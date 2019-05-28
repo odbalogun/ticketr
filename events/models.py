@@ -8,12 +8,15 @@ import datetime
 
 def category_image_path(instance, filename):
     # for file uploads
-    return 'images/events/categories/{0}/{1}'.format(instance.pk, filename)
+    return 'images/events/categories/{0}/{1}/{2}/{3}'.format(datetime.datetime.now().year,
+                                                             datetime.datetime.now().month,
+                                                             datetime.datetime.now().day, filename)
 
 
 def event_image_path(instance, filename):
     # for file uploads
-    return 'images/events/events/{0}/{1}'.format(instance.pk, filename)
+    return 'images/events/events/{0}/{1}/{2}/{3}'.format(datetime.datetime.now().year, datetime.datetime.now().month,
+                                                         datetime.datetime.now().day, filename)
 
 
 # Create your models here.
@@ -84,7 +87,7 @@ class Event(SafeDeleteModel):
         return datetime.datetime.combine(self.end_date, self.end_time)
 
     def get_absolute_url(self):
-        return reverse('event-detail', kwargs={'slug': self.slug})
+        return reverse('events:detail', kwargs={'pk': self.pk})
 
 
 class Ticket(SafeDeleteModel):
