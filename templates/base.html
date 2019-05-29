@@ -37,18 +37,23 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-2">
-                                <a class="logo" href="home"><img src="{% static 'images/ticketr_logo_transparent.png' %}" alt=""></a>
+                                <a class="logo" href="{% url 'pages:home' %}"><img src="{% static 'images/ticketr_logo_transparent.png' %}" alt=""></a>
                             </div>
                             <div class="col-md-10 p-0">
                                 <nav>
                                     <ul class="d-none d-lg-block">
-                                        <li ng-class="{ active: isActive('/event')}"><a href="event">Event tickets</a></li>
-                                        <li ng-class="{ active: isActive('/movies')}"><a href="movies">Movies tickets</a></li>
-                                        <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="BuyAdeal">Buy a deal</a></li>
-                                        <li ng-class="{ active: isActive('/book-a-talent')}"><a href="BookAtalent">Book a talent</a></li>
-                                        <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Login</a></li>
-                                        <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#exampleModal" href="javascript:void(0)">Sign up</a></li>
-                                        <li ng-class="{ active: isActive('//create-event')}" class="create"><a href="CreateEvent">Create Event</a></li>
+                                        <li ng-class="{ active: isActive('/event')}"><a href="#">Event tickets</a></li>
+                                        <li ng-class="{ active: isActive('/movies')}"><a href="#">Movies tickets</a></li>
+                                        <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="{% url 'deals:list' %}">Buy a deal</a></li>
+                                        <li ng-class="{ active: isActive('/book-a-talent')}"><a href="{% url 'talents:create-booking' %}">Book a talent</a></li>
+                                        {% if not request.user.is_authenticated %}
+                                            <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Login</a></li>
+                                            <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#exampleModal" href="javascript:void(0)">Sign up</a></li>
+                                            <li ng-class="{ active: isActive('//create-event')}" class="create"><a data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Create Event</a></li>
+                                        {% else %}
+                                            <li ng-class="{ active: isActive('/book-a-talent')}"><a href="{% url 'pages:logout' %}">Logout</a></li>
+                                            <li ng-class="{ active: isActive('//create-event')}" class="create"><a href="{% url 'events:create' %}">Create Event</a></li>
+                                        {% endif %}
                                     </ul>
                                     <ul>
                                         <li class="d-md-none menu-icon"><span><i class="fas fa-bars"></i></span></li>
@@ -135,40 +140,11 @@
 
         </div>
 
-        {% include "pages/_signup.html" %}
+        {% if not request.user.is_authenticated %}
+            {% include "pages/_signup.html" %}
 
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="ticketr-signup">
-                    <div class="logo">
-                        <img src="{% static 'images/ticketr_logo_transparent.png' %}" alt="">
-                        
-                    </div>
-                    <div class="title">Login and start selling your tickets, in minutes!</div>
-                    <div class="form-content">
-            <form action="" method="post">
-                <div class="form-wrap">
-                    <label for="">Email</label>
-                    <input type="text" name="email" placeholder="Enter your email">
-                </div>
-                    <div class="form-wrap">
-                        <label for="">Password</label>
-                        <input type="password" name="password" placeholder="Enter your password">
-                    </div>
-                    <button type="submit">Login</button>
-                </form>
-            </div><br><br>
-                    <div class="with-account">
-                        Don't have an account? Please <a class="button" href="#">Sign up</a>
-                    </div>
-                    <div class="without-account">
-                        Looking to buy tickets? lets <a class="button" href="#">Shop tickets</a>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
+            {% include "pages/_login.html" %}
+        {% endif %}
 
         <script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
         <script src="{% static 'assets/js/popper.min.js' %}"></script>

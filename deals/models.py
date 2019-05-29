@@ -2,11 +2,13 @@ from django.db import models
 from safedelete.models import SafeDeleteModel
 from django.template.defaultfilters import slugify
 from django.conf import settings
+import datetime
 
 
 def deals_image_path(instance, filename):
     # for file uploads
-    return 'images/deals/{0}/{1}'.format(instance.deal.pk, filename)
+    return 'images/deals/{0}/{1}/{2}/{3}'.format(datetime.datetime.now().year, datetime.datetime.now().month,
+                                                 datetime.datetime.now().day, filename)
 
 
 class Categories(SafeDeleteModel):
