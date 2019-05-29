@@ -2,6 +2,7 @@ from django.views.generic import CreateView, DetailView
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.contrib import messages
 from .models import Event
 from .forms import EventFormModel, TicketFormSet
 
@@ -18,6 +19,14 @@ def create_event(request):
             ticket_set.save()
             # redirect
             return HttpResponseRedirect(reverse_lazy("events:detail", kwargs={'pk': event.pk}))
+        else:
+            if form.errors:
+                key, value = form.errors.popitem()
+                messages.error(request, "{}: {}".format(key, value))
+            elif ticket_set.errors:
+                key, value = ticket_set.errors.popitem()
+                messages.error(request, "{}: {}".format(key, value))
+
     else:
         form = EventFormModel(instance=event)
         ticket_set = TicketFormSet(instance=event)
