@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block pagecontent %}
+<section class="banner" style="background-image: url('{{ object.image.url }}')">
+	<!-- <div class="overlay">
+		<div class="container">
+			<div class="first"><strong>Connecting people</strong> together <br>through <strong>real life experiences.</strong> </div><br/>
+		</div>
+	</div> -->
+</section>
+
+<section class="event-content">
+    <div class="container">
+        <div class="col-md-6 col-sm-12 p-0"> <div class="event-title">{{ object.title }}</div></div>
+        <div class="caption">{{ object.description }} [<a href=""><strong>OTHER {{ object.category | upper }} EVENTS</strong></a>]</div>
+        <div class="time-wrap">
+            <div class="time">
+                <strong>{{ object.start_date | date:"D, M j Y" | upper }}</strong>
+                <span>{{ object.start_time | time:"h:i A" | upper }}</span>
+            </div>
+            <div class="time">
+                <strong>{{ object.end_date | date:"D, M j Y" | upper }}</strong>
+                <span>{{ object.end_time | time:"h:i A" | upper }}</span>
+            </div>
+        </div>
+        <div class="title">
+            <div class="line"></div>
+            <div class="text">TICKETS</div>
+        </div>
+    </div>
+</section>
+
+<section class="table">
+    <div class="container">
+        <table>
+            <tr class="header">
+                <th>Ticket Type</th>
+                <th>Ticket</th>
+                <th>Available QTY</th>
+                <th>QTY</th>
+            </tr>
+            <form action="">
+                {% for ticket in object.tickets.all %}
+                <tr>
+                    <td style="width: 40%;">{{ ticket.name }}</td>
+                    <td>N{{ ticket.price | intcomma }}</td>
+                    <td>{{ ticket.quantity }}</td>
+                    <td>
+                        <input type="number" size="5" />
+                    </td>
+                </tr>
+                {% endfor %}
+            </form>
+            <tr>
+                <td colspan="3">
+                    <ul class="payment-icon">
+                        <li><img src="{% static 'images/visa.png' %}" alt="visa"></li>
+                        <li><img src="{% static 'images/mastercard.png' %}" alt="master card"></li>
+                        <li><img src="{% static 'images/verve.png' %}" alt="verve"></li>
+                    </ul>
+                </td>
+                <td>
+                    <button>Checkout</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"><a class="refund" href="#">REFUND POLICY</a></td>
+            </tr>
+        </table>
+    </div>
+</section>
+{% endblock %}

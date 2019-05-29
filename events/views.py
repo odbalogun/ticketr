@@ -35,7 +35,7 @@ def create_event(request):
 
 
 class EventDetailView(DetailView):
-    template_name = 'events/_detail.html'
+    template_name = 'events/detail.html'
     queryset = Event.objects.all()
 
 # class EventCreateView(CreateView):
