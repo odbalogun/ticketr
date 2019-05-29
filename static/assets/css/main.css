@@ -1,6 +1,6 @@
 body {
   position: relative;
-  font-family: "Roboto", sans-serif !important;
+  font-family: "gotham", sans-serif !important;
 }
 a {
   text-decoration: none;
@@ -46,7 +46,7 @@ header nav ul li {
 }
 header nav ul li a {
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 15px;
   color: #00637c !important;
   padding: 10px;
   text-decoration: none;
@@ -168,6 +168,11 @@ header .menu-icon i {
   color: #fff;
   font-size: 20px;
   font-size: 45px;
+  font-weight: 500;
+}
+.banner .overlay .first strong {
+  font-weight: 500;
+  font-family: 'ticketr';
 }
 .search {
   padding: 2rem 0;
@@ -226,7 +231,7 @@ header .menu-icon i {
 }
 .content .title .line {
   width: 30%;
-  border-top: 2px solid #00374a;
+  border-top: 1px solid #ffbc36;
   margin-top: 24px;
 }
 .content .title .text {
@@ -326,7 +331,7 @@ header .menu-icon i {
 }
 .discover-more .title .line {
   width: 50%;
-  border-top: 2px solid #00374a;
+  border-top: 1px solid #ffbc36;
   margin-top: 24px;
 }
 .discover-more .title .text {
@@ -402,7 +407,7 @@ header .menu-icon i {
 .newsletter input {
   width: 300px;
   height: 55px;
-  border: 9px solid #00374a;
+  border: 2px solid #00374a;
   padding: 0 10px;
   outline: none;
   text-align: center;
@@ -643,7 +648,7 @@ header .menu-icon i {
 .create-event .title {
   text-align: center;
   color: #00374a;
-  font-size: 40px;
+  font-size: 35px;
   position: relative;
 }
 .create-event .title:after {
@@ -791,13 +796,17 @@ footer .subfooter {
   background: #00374a;
   text-align: center;
   color: #fff;
-  font-size: 20px;
+  font-size: 26px;
   letter-spacing: 2px;
   padding: 1rem 0;
+  font-family: "ticketr";
 }
 footer .subfooter .click-here {
   color: #ffbc36;
   text-decoration: none;
+}
+footer .subfooter strong {
+  font-weight: bold;
 }
 footer .copywrite {
   color: #00637c;

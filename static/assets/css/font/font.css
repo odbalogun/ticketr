@@ -1,0 +1,102 @@
+@font-face {
+    font-family: gotham;
+    src: url(gotham/Gotham-Black.otf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/Gotham-UltraItalic.otf);
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/GothamBold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/GothamBoldItalic.ttf);
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/GothamBook.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/GothamBookItalic.ttf);
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/GothamLight.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/GothamLightItalic.ttf);
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/Gotham-XLight.otf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/Gotham-XLightItalic.otf);
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/Gotham-Thin.otf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(gotham/Gotham-ThinItalic.otf);
+    font-weight: 200;
+    font-style: italic;
+}
+
+
+
+
+
+
+
+
+@font-face {
+    font-family: ticketr;
+    src: url(gotham/tt0283m_5.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: ticketr;
+    src: url(gotham/tt0284m_5.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: ticketr;
+    src: url(gotham/tt0351m_5.ttf);
+    font-weight: bold;
+}
