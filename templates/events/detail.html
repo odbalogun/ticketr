@@ -14,7 +14,7 @@
 <section class="event-content">
     <div class="container">
         <div class="col-md-6 col-sm-12 p-0"> <div class="event-title">{{ object.title }}</div></div>
-        <div class="caption">{{ object.description }} [<a href=""><strong>OTHER {{ object.category | upper }} EVENTS</strong></a>]</div>
+        <div class="caption">{{ object.description }} [<a href="{% url 'events:list-by-category' object.category.slug %}"><strong>OTHER {{ object.category | upper }} EVENTS</strong></a>]</div>
         <div class="time-wrap">
             <div class="time">
                 <strong>{{ object.start_date | date:"D, M j Y" | upper }}</strong>

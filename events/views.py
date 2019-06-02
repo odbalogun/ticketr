@@ -1,9 +1,9 @@
 from django.views.generic import ListView, DetailView
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib import messages
-from .models import Event
+from .models import Event, Category
 from .forms import EventFormModel, TicketFormSet
 
 
@@ -42,3 +42,19 @@ class EventDetailView(DetailView):
 class EventListView(ListView):
     template_name = 'events/list.html'
     queryset = Event.objects.all()
+
+
+class EventGetListByCategoryView(ListView):
+    template_name = 'events/list_by_category.html'
+    queryset = Event.objects.all()
+
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, slug=self.kwargs['category_slug'])
+        return self.queryset.filter(category=self.category)
+
+    def get_context_data(self, **kwargs):
+        # Call the super method first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add the category information
+        context['category'] = self.category
+        return context
