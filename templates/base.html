@@ -31,12 +31,17 @@
         <!-- Add your site or application content here -->
 
         <div id="page-wrapper">
-            <div style="border-radius: 0; position: absolute; z-index: 10; right: 30px; top: 30px;" class="alert alert-primary alert-dismissible fade show" role="alert">
-                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div style="border-radius: 0; position: absolute; z-index: 10; right: 30px; top: 30px;" class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             <!-- Header -->
                 <header class="home">
                     <div class="container">
@@ -85,13 +90,6 @@
 
                 <div id="main">
                     <div ui-view>
-                        {% if messages %}
-                            <ul class="messages">
-                                {% for message in messages %}
-                                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
                         {% block pagecontent %}{% endblock %}
                     </div>
                 </div>
