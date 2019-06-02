@@ -281,6 +281,19 @@ header {
         background-size: cover;
         background-color: #efefef;
         border-radius: 0;
+        .category{
+          position: absolute;
+          background: #ffbc36;
+          color: #fff;
+          right: 0;
+          top: 0;
+          padding: 5px 35px;
+          font-weight: 600;
+          font-size: 12px;
+          text-transform: uppercase;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+        0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
       }
       .card-title {
         padding: 5px 15px;
@@ -293,6 +306,10 @@ header {
         font-weight: 400;
         font-size: 15px;
         padding: 0 15px 5px 15px;
+        span{
+          display: inline-block;
+          margin-right: 5px;
+        }
       }
       .price {
         position: relative;
@@ -349,6 +366,32 @@ header {
       }
     }
   }
+}
+
+.not-available{
+  margin: 7rem 0;
+  text-align: center;
+  img{
+    width: 90px;
+  }
+  .info{
+    padding: 20px 0 0 0;
+    font-weight: 600;
+    font-size: 23px;
+  }
+  a{
+    display: inline-block;
+    border: 1px solid transparent;
+    padding: 4px 15px;
+    border-radius: 6px;
+    background: #ffcd37;
+    color: #fff;
+    outline: none;
+    text-decoration: none;
+    font-weight: 400;
+    margin-top: 20px;
+    font-weight: 600;
+}
 }
 
 .discover-more {
@@ -409,6 +452,10 @@ header {
             font-weight: 400;
             font-size: 16px;
             padding-bottom: 10px;
+            span{
+              display: inline-block;
+              margin-right: 5px;
+            }
           }
           button.buy,
           a.buy {
@@ -446,9 +493,16 @@ header {
   }
 }
 
-.modal-content {
+.modal-content.forms {
   background: transparent;
   border: none;
+  .modal-header{
+    border: none;
+    button{
+      color: #fff;
+      opacity: 1;
+    }
+  }
   .ticketr-signup {
     position: relative;
     text-align: center;
@@ -560,6 +614,59 @@ header {
   }
 }
 
+.modal-content.deals{
+  min-height: 430px;
+  .deal-info{
+    .deals-img{
+        position: relative;
+        width: 100%;
+        height: 280px;
+        background-position: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #efefef;
+        border-radius: 0;
+    }
+    .title{
+      font-weight: 600;
+      font-size: 23px;
+      padding: 5px 0
+    }
+    input{
+      border: 2px solid #e7e7e7;
+      padding: 0 0px 0 10px;
+      font-size: 17px;
+      height: 40px;
+      width: 80px;
+      margin: 10px 0;
+    }
+    .price{
+      padding: 5px 0;
+      font-size: 21px;
+      strong{
+        font-size: 14px;
+      }
+    }
+    .description{
+      padding: 5px 0;
+      font-size: 17px;
+    }
+    a.buy{
+      border: 1px solid transparent;
+      padding: 10px 40px;
+      font-weight: 600;
+      border-radius: 6px;
+      background: #ffcd37;
+      display: inline-block;
+      outline: none;
+      text-decoration: none;
+      color: #000;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  }
+}
+
 .modal-backdrop.show {
   opacity: 0.8 !important;
 }
@@ -623,6 +730,21 @@ header {
       font-weight: 600;
       font-size: 25px;
       color: #f5d69c;
+    }
+  }
+  .create-event-button-wrap{
+    text-align: center;
+    margin: 3em 0;
+    a{
+      border: 1px solid transparent;
+        padding: 10px 40px;
+        font-weight: 600;
+        border-radius: 6px;
+        background: #ffcd37;
+        display: inline-block;
+        outline: none;
+        text-decoration: none;
+        color: #000;
     }
   }
 }

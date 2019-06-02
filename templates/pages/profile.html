@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pagecontent %}
+
+<section class="event-content">
+    <div class="container">
+        <div class="col-md-6 col-sm-12 p-0"> <div class="event-title">Cambory Event planner</div></div>
+        <div class="caption">By God's Children of Memphis </div>
+
+        <div class="title">
+            <div class="line" style="width: 75%;"></div>
+            <div class="text" style="width: 25%;">Uploaded Events</div>
+        </div>
+
+        <div class="content">
+           <div class="cards">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-wrap">
+                        <div class="card-img" style="background-image: url('{% static 'images/1.jpg' %}')"></div>
+                        <div class="card-title">The Lagos Ultimate Party 2019</div>
+                        <div class="description">
+                            <span><i class="far fa-calendar-alt"></i> </span> Saturday, May 1st 2020
+                        </div>
+                        <div class="description">
+                            <span><i class="far fa-clock"></i></span> 10pm till 5am
+                        </div>
+                        <div class="description">
+                            <span><i class="fas fa-map-marker-alt"></i></span> LandMark Event Center, Oniru.
+                        </div>
+                        <div class="price">
+                            <strong>Regular:</strong> N5,000
+                        </div>
+                        <div class="price">
+                            <strong>Regular:</strong> N10,000
+                        </div><br/>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-wrap">
+                        <div class="card-img" style="background-image: url('{% static 'images/1.jpg' %}')"></div>
+                        <div class="card-title">The Lagos Ultimate Party 2019</div>
+                        <div class="description">
+                            <span><i class="far fa-calendar-alt"></i> </span>    Saturday, May 1st 2020
+                        </div>
+                        <div class="description">
+                            <span><i class="far fa-clock"></i></span>    10pm till 5am
+                        </div>
+                        <div class="description">
+                            <span><i class="fas fa-map-marker-alt"></i></span> LandMark Event Center, Oniru.
+                        </div>
+                        <div class="price">
+                            <strong>Regular:</strong> N5,000
+                        </div>
+                        <div class="price">
+                            <strong>Regular:</strong> N10,000
+                        </div><br/>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-wrap">
+                        <div class="card-img" style="background-image: url('{% static 'images/1.jpg' %}')"></div>
+                        <div class="card-title">The Lagos Ultimate Party 2019</div>
+                        <div class="description">
+                            <span><i class="far fa-calendar-alt"></i> </span>    Saturday, May 1st 2020
+                        </div>
+                        <div class="description">
+                            <span><i class="far fa-clock"></i></span>    10pm till 5am
+                        </div>
+                        <div class="description">
+                            <span><i class="fas fa-map-marker-alt"></i></span> LandMark Event Center, Oniru.
+                        </div>
+                        <div class="price">
+                            <strong>Regular:</strong> N5,000
+                        </div>
+                        <div class="price">
+                            <strong>Regular:</strong> N10,000
+                        </div><br/>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> 
+        </div>
+
+
+        <div class="create-event-button-wrap">
+            <a href="{% url 'events:create' %}">Create event</a>
+        </div>
+        
+    </div>
+</section>
+
+{% endblock %}
