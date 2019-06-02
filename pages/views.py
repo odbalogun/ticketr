@@ -15,6 +15,15 @@ from django.conf import settings
 class TestPageView(TemplateView):
     template_name = "pages/talent.html"
 
+class ProfilePageView(TemplateView):
+    template_name = "pages/profile.html"
+
+class CheckoutPageView(TemplateView):
+    template_name = "pages/checkout.html"
+
+class DealsPageView(TemplateView):
+    template_name = "pages/deals.html"
+
 
 class HomePageView(TemplateView):
     template_name = "pages/index.html"

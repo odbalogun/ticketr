@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pagecontent %}
+
+<section class="table" style="margin: 5em 0">
+    <div class="container">
+        <table>
+            <tr class="header">
+                <th>Ticket Type</th>
+                <th>Ticket</th>
+                <th>Fee</th>
+                <th>QTY</th>
+            </tr>
+            <tr>
+                <td style="width: 40%;">Advance Ticket</td>
+                <td>$15.00</td>
+                <td>$1.75</td>
+                <td>
+                    <form action="">
+                        <select>
+                            <option value="">0</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                        </select>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    V.I.P Ticket
+                    <div class="more-info"> <a href="#">More Info</a></div>
+                </td>
+                <td>$30.00</td>
+                <td>$2.75</td>
+                <td>
+                    <form action="">
+                        <select>
+                            <option value="">0</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                        </select>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                </td>
+                <td>
+                    Total
+                </td>
+                <td>$4.40</td>
+                
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <ul class="payment-icon">
+                        <li><img src="{% static 'images/visa.png' %}" alt="visa"></li>
+                        <li><img src="{% static 'images/mastercard.png' %}" alt="master card"></li>
+                        <li><img src="{% static 'images/verve.png' %}" alt="verve"></li>
+                    </ul>
+                </td>
+                <td>
+                    <button>Checkout</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"><a class="refund" href="#">REFUND POLICY</a></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+{% endblock %}
