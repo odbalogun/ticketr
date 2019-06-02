@@ -442,7 +442,7 @@ header {
           right: 0;
           left: 0;
           background-color: rgba(0, 0, 0, 0.7);
-          padding: 7rem 20px 20px 20px;
+          padding: 5rem 20px 20px 20px;
           .card-title {
             padding: 10px 0 0 0;
             font-weight: 600;
@@ -618,6 +618,59 @@ header {
   min-height: 430px;
   .deal-info{
     .deals-img{
+        position: relative;
+        width: 100%;
+        height: 280px;
+        background-position: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #efefef;
+        border-radius: 0;
+    }
+    .title{
+      font-weight: 600;
+      font-size: 23px;
+      padding: 5px 0
+    }
+    input{
+      border: 2px solid #e7e7e7;
+      padding: 0 0px 0 10px;
+      font-size: 17px;
+      height: 40px;
+      width: 80px;
+      margin: 10px 0;
+    }
+    .price{
+      padding: 5px 0;
+      font-size: 21px;
+      strong{
+        font-size: 14px;
+      }
+    }
+    .description{
+      padding: 5px 0;
+      font-size: 17px;
+    }
+    a.buy{
+      border: 1px solid transparent;
+      padding: 10px 40px;
+      font-weight: 600;
+      border-radius: 6px;
+      background: #ffcd37;
+      display: inline-block;
+      outline: none;
+      text-decoration: none;
+      color: #000;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  }
+}
+
+.modal-content.movies{
+  min-height: 430px;
+  .movies-info{
+    .movies-img{
         position: relative;
         width: 100%;
         height: 280px;

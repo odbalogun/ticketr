@@ -24,6 +24,11 @@ class CheckoutPageView(TemplateView):
 class DealsPageView(TemplateView):
     template_name = "pages/deals.html"
 
+class MoviesPageView(TemplateView):
+    template_name = "pages/movies.html"
+
+class EventsPageView(TemplateView):
+    template_name = "pages/events.html"
 
 class HomePageView(TemplateView):
     template_name = "pages/index.html"
