@@ -21,9 +21,6 @@ class ProfilePageView(TemplateView):
 class CheckoutPageView(TemplateView):
     template_name = "pages/checkout.html"
 
-class DealsPageView(TemplateView):
-    template_name = "pages/deals.html"
-
 
 class HomePageView(TemplateView):
     template_name = "pages/index.html"
