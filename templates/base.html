@@ -42,7 +42,7 @@
                             <div class="col-md-10 p-0">
                                 <nav>
                                     <ul class="d-none d-lg-block">
-                                        <li ng-class="{ active: isActive('/event')}"><a href="#">Event tickets</a></li>
+                                        <li ng-class="{ active: isActive('/event')}"><a href="{% url 'events:list' %}">Events</a></li>
                                         <li ng-class="{ active: isActive('/movies')}"><a href="#">Movies tickets</a></li>
                                         <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="{% url 'deals:list' %}">Buy a deal</a></li>
                                         <li ng-class="{ active: isActive('/book-a-talent')}"><a href="{% url 'talents:create-booking' %}">Book a talent</a></li>

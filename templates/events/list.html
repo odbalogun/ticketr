@@ -1,0 +1,12 @@
+{% block content %}
+    <br/>
+    <ul>
+        {% for item in object_list %}
+            <li>{{ item.pk }} - {{ item.title }} - {{ item.slug }}</li>
+        {% empty %}
+            <li>No events found</li>
+        {% endfor %}
+    </ul>
+    <hr/>
+    <a href="{% url 'events:create' %}">Create new event</a>
+{% endblock %}

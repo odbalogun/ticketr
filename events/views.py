@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, DetailView
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -38,6 +38,7 @@ class EventDetailView(DetailView):
     template_name = 'events/detail.html'
     queryset = Event.objects.all()
 
-# class EventCreateView(CreateView):
-#     template_name = 'events/create.html'
-#     form_class = EventFormModel
+
+class EventListView(ListView):
+    template_name = 'events/list.html'
+    queryset = Event.objects.all()
