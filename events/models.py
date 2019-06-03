@@ -99,3 +99,7 @@ class Ticket(SafeDeleteModel):
 
     class Meta:
         unique_together = ('event', 'name')
+
+    @property
+    def display_price(self):
+        return "NGN{:0,.2f}".format(self.price)
