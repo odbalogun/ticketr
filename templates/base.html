@@ -53,7 +53,7 @@
                                 <nav>
                                     <ul class="d-none d-lg-block">
                                         <li ng-class="{ active: isActive('/event')}"><a href="{% url 'events:list' %}">Events</a></li>
-                                        <li ng-class="{ active: isActive('/movies')}"><a href="#">Movies tickets</a></li>
+                                        <li ng-class="{ active: isActive('/movies')}"><a href="{% url 'pages:movies' %}">Movies tickets</a></li>
                                         <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="{% url 'deals:list' %}">Buy a deal</a></li>
                                         <li ng-class="{ active: isActive('/book-a-talent')}"><a href="{% url 'talents:create-booking' %}">Book a talent</a></li>
                                         {% if not request.user.is_authenticated %}

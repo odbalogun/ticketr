@@ -21,6 +21,8 @@ class ProfilePageView(TemplateView):
 class CheckoutPageView(TemplateView):
     template_name = "pages/checkout.html"
 
+class MoviesPageView(TemplateView):
+    template_name = "pages/movies.html"
 
 class HomePageView(TemplateView):
     template_name = "pages/index.html"
