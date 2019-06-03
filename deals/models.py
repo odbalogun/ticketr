@@ -66,3 +66,7 @@ class DealCategories(SafeDeleteModel):
         unique_together = ('category', 'deal')
         verbose_name_plural = 'deal categories'
         verbose_name = 'deal category'
+
+    @property
+    def display_price(self):
+        return "NGN{:0,.2f}".format(self.price)

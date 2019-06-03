@@ -20,8 +20,7 @@ class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
     created_at = models.DateTimeField('date created', auto_now_add=True)
     verification_code = models.CharField('verification code', max_length=50, null=True)
     is_active = models.BooleanField('active', default=True)
-    is_staff = models.BooleanField('is staff', default=False)
-    is_admin = models.BooleanField('is admin', default=False)
+    is_staff = models.BooleanField('is staff', default=True)
 
     objects = UserManager()
 
@@ -29,8 +28,8 @@ class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     class Meta:
-        verbose_name = 'user'
-        verbose_name_plural = 'users'
+        verbose_name = 'admin'
+        verbose_name_plural = 'admins'
 
     def __str__(self):
         return self.company if self.company else self.get_full_name()
@@ -66,3 +65,13 @@ class User(SafeDeleteModel, AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], fail_silently=True, **kwargs)
+
+
+class Client(User):
+    """
+    Proxy model so we can separate logic for Client from that for admin users in Django admin
+    """
+    class Meta:
+        proxy = True
+        verbose_name = 'user'
+        verbose_name_plural = 'users'
