@@ -3,8 +3,27 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.db.models import Q
 from .models import Event, Category
 from .forms import EventFormModel, TicketFormSet
+
+
+def search_events(request):
+    search_term, location = request.GET.get('q'), request.GET.get('location')
+    qs = Event.objects
+    filters = False
+
+    if search_term:
+        filters = Q(title__icontains=search_term)
+        if location:
+            filters = filters & (Q(venue__name__icontains=location) | Q(venue__street__icontains=location)
+                                 | Q(venue__city__icontains=location))
+
+    if filters:
+        qs = qs.filter(filters)
+
+    return render(request, 'events/search.html', {'object_list': qs.all(), 'search_term': search_term,
+                                                  'location': location})
 
 
 def create_event(request):

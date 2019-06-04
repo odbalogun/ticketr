@@ -13,20 +13,20 @@
     <section class="search">
         <div class="container">
             <div class="search-wrap">
-                <form action="">
+                <form action="{% url 'events:search' %}" method="GET">
                     <div class="row">
                         <div class="col-md-11">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-wrap">
-                                        <label for="">Search events & deals</label>
-                                        <input type="text" placeholder="Search event">
+                                        <label for="">Search events</label>
+                                        <input type="text" placeholder="Search event" name="q">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-wrap">
                                         <label for="">Search by location</label>
-                                        <input type="text" placeholder="Search deal">
+                                        <input type="text" placeholder="Search deal" name="location">
                                     </div>
                                 </div>
                                 <!--
