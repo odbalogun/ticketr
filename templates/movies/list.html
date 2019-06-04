@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pagecontent %}
+<section class="banner" style="background-image: url('{% static 'images/movies.jpg' %}'); height: 300px;">
+    <div class="overlay">
+        <div class="container">
+            <div class="first" style="margin-top: 2.3em;"><strong>Movies</strong></div>
+        </div>
+    </div>
+</section>
+
+<section class="discover-more">
+    <div class="container">
+        <div class="title">
+            <div class="line"></div>
+            <div class="text">Now showing</div>
+            <div class="line"></div>
+        </div>
+        <div class="cards">
+            <div class="row">
+                {% for item in object_list %}
+                <div class="col-md-4">
+                    <div class="card-wrap">
+                        <div class="card-img" style="background-image: url('{{ item.image.url }}')">
+                            <div class="overlay">
+                                <div class="card-title">{{ item.title }}</div>
+                                <div class="description">
+                                    <span><i class="far fa-star"></i></span> {{ item.rating }}
+                                </div>
+                                
+                                <button class="buy" data-toggle="modal" data-target="#movies-{{item.pk}}">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="movies-{{item.pk}}" tabindex="-1" role="dialog" aria-labelledby="moviesModal" aria-hidden="true">
+                    <div class="modal-dialog" style="max-width: 900px;" role="document">
+                        <div class="modal-content movies">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="movies-info">
+                                    <form action="">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="movies-img" style="background-image: url('{{ item.image.url }}')"></div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="title">
+                                                    {{ item.title }}
+                                                </div>
+                                                <div class="price">
+                                                    <strong>2D Price:</strong> {{ item.display_price_2d }}
+                                                </div>
+                                                <div class="price">
+                                                    <strong>3D Price:</strong> {{ item.display_price_3d }}
+                                                </div>
+                                                <input type="number" value="0">
+                                                <div class="description">
+                                                    {{ item.description }}
+                                                </div>
+                                                <div>
+                                                    <a href="#" class="buy">Book Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
