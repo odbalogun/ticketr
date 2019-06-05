@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'discounts',
     'talents',
     'events',
+    'movies',
     'pages'
 ]
 

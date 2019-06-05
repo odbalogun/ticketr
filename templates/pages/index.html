@@ -13,20 +13,20 @@
     <section class="search">
         <div class="container">
             <div class="search-wrap">
-                <form action="">
+                <form action="{% url 'events:search' %}" method="GET">
                     <div class="row">
                         <div class="col-md-11">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-wrap">
-                                        <label for="">Search events & deals</label>
-                                        <input type="text" placeholder="Search event">
+                                        <label for="">Search events</label>
+                                        <input type="text" placeholder="Search event" name="q">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-wrap">
                                         <label for="">Search by location</label>
-                                        <input type="text" placeholder="Search deal">
+                                        <input type="text" placeholder="Search deal" name="location">
                                     </div>
                                 </div>
                                 <!--
@@ -62,13 +62,19 @@
                     <div class="col-md-3">
                         <div class="card-wrap">
                             <div class="card-img" style="background-image: url('{{ event.image.url }}')"></div>
-                            <div class="card-title">{{ event.title }}</div>
+                            <div class="card-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></div>
                             <div class="description">
-                                {{ event.start_date_time }} till {{ event.end_date_time }} {{ event.venue.name }} {{ event.venue.city }}
+                                <span><i class="far fa-calendar-alt"></i> </span> {{ event.start_date | date:'l, M jS  Y' }}
+                            </div>
+                            <div class="description">
+                                <span><i class="far fa-clock"></i></span> {{ event.start_time | date:'H:i a' }}
+                            </div>
+                            <div class="description">
+                                <span><i class="fas fa-map-marker-alt"></i></span> {{ event.venue }}
                             </div>
                             {% for ticket in event.tickets.all %}
                             <div class="price">
-                                <strong>{{ ticket.name }}:</strong> N{{ ticket.price }}
+                                <strong>{{ ticket.name }}:</strong> {{ ticket.display_price }}
                             </div>
                             {% endfor %}
                             <a class="read-more" href="{{ event.get_absolute_url }}">Read More</a>
@@ -82,7 +88,7 @@
                 </div>
             </div>
             <div class="more-content">
-                <button>More</button>
+                <button><a href="{% url 'events:list' %}">More</a></button>
             </div>
         </div>
     </section>
@@ -119,7 +125,7 @@
                 </div>
             </div>
             <div class="more-content">
-                <button>More</button>
+                <button><a href="{% url 'deals:list' %}">More</a></button>
             </div>
         </div>
     </section>

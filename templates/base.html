@@ -53,7 +53,7 @@
                                 <nav>
                                     <ul class="d-none d-lg-block">
                                         <li ng-class="{ active: isActive('/event')}"><a href="{% url 'events:list' %}">Events</a></li>
-                                        <li ng-class="{ active: isActive('/movies')}"><a href="{% url 'pages:movies' %}">Movies tickets</a></li>
+                                        <li ng-class="{ active: isActive('/movies')}"><a href="{% url 'movies:list' %}">Movies tickets</a></li>
                                         <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="{% url 'deals:list' %}">Buy a deal</a></li>
                                         <li ng-class="{ active: isActive('/book-a-talent')}"><a href="{% url 'talents:create-booking' %}">Book a talent</a></li>
                                         {% if not request.user.is_authenticated %}
@@ -77,14 +77,19 @@
                 <div class="mobile-menu-wrap home d-md-none">
                     <span class="cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
                     <ul>
-                        <li><a class="close-me clearfix animate bounceIn"  href="home"><span class="text">Home</span></a></li>
-                        <li><a class="close-me clearfix animate bounceIn"  href="event"><span class="text">Event tickets</span></a></li>
-                        <li><a class="close-me clearfix animate bounceIn"  href="movies"><span class="text">Movies tickets</span></a></li>
-                        <li><a class="close-me clearfix animate bounceIn"  href="BuyAdeal"><span class="text">Buy a deal</span></a></li>
-                        <li><a class="close-me clearfix animate bounceIn"  href="BookAtalent"><span class="text">Book a talent</span></a></li>
-                        <li><a class="close-me clearfix animate bounceIn" data-toggle="modal" data-target="#loginModal"  href="javascript:void(0)"><span class="text">Log in</span></a></li>
-                        <li><a class="close-me clearfix animate bounceIn" data-toggle="modal" data-target="#exampleModal"  href="javascript:void(0)"><span class="text">Sign up</span></a></li>
-                        <li><a class="close-me clearfix animate bounceIn"  href="CreateEvent"><span class="text">Create Event</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  href="{% url 'pages:home' %}"><span class="text">Home</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  href="{% url 'events:list' %}"><span class="text">Event tickets</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  href="{% url 'movies:list' %}"><span class="text">Movies tickets</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  href="{% url 'deals:list' %}"><span class="text">Buy a deal</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  href="{% url 'talents:create-booking' %}"><span class="text">Book a talent</span></a></li>
+                        {% if not request.user.is_authenticated %}
+                            <li><a class="close-me clearfix animate bounceIn" data-toggle="modal" data-target="#loginModal"  href="javascript:void(0)"><span class="text">Log in</span></a></li>
+                            <li><a class="close-me clearfix animate bounceIn" data-toggle="modal" data-target="#exampleModal"  href="javascript:void(0)"><span class="text">Sign up</span></a></li>
+                            <li><a class="close-me clearfix animate bounceIn" data-toggle="modal" data-target="#loginModal"  href="javascript:void(0)"><span class="text">Create Event</span></a></li>
+                        {% else %}
+                            <li><a class="close-me clearfix animate bounceIn" href="{% url 'pages:logout' %}"><span class="text">Logout</span></a></li>
+                            <li><a class="close-me clearfix animate bounceIn"  href="{% url 'events:create' %}"><span class="text">Create Event</span></a></li>
+                        {% endif %}
                     </ul>
                 </div>
 

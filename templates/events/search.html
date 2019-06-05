@@ -1,0 +1,21 @@
+{% block content %}
+    <br/>
+    {% if search_term %}
+        {% if location %}
+            <p>Showing results for "{{ search_term }}" in "{{ location }}"</p>
+        {% else %}
+            <p>Showing results for "{{ search_term }}"</p>
+        {% endif %}
+    {% elif location %}
+        <p>Showing results for events in "{{ location }}"</p>
+    {% endif %}
+    <ul>
+        {% for item in object_list %}
+            <li><a href="{{ item.get_absolute_url }}">{{ item.pk }} - {{ item.title }} - {{ item.slug }}</a></li>
+        {% empty %}
+            <li>No events found</li>
+        {% endfor %}
+    </ul>
+    <hr/>
+    <a href="{% url 'events:create' %}">Create new event</a>
+{% endblock %}

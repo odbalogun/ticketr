@@ -36,6 +36,7 @@ urlpatterns = [
     path('discounts/', include('discounts.urls', namespace='discounts')),
     path('talents/', include('talents.urls', namespace='talents')),
     path('events/', include('events.urls', namespace='events')),
+    path('movies/', include('movies.urls', namespace='movies')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
