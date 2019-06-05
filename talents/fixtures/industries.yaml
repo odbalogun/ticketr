@@ -1,0 +1,10 @@
+- model: talents.industry
+  pk: 1
+  fields:
+    name: Music
+
+
+- model: talents.industry
+  pk: 1
+  fields:
+    name: Music

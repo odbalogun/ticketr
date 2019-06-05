@@ -30,10 +30,18 @@ class Bookings(SafeDeleteModel):
         return "$%s" % self.budget_to if self.budget_to else ""
 
 
+class Industry(SafeDeleteModel):
+    name = models.CharField('industry', max_length=100, unique=True)
+
+    class Meta:
+        verbose_name_plural = 'industries'
+        verbose_name = 'industry'
+
+
 class BookingTalents(SafeDeleteModel):
     booking = models.ForeignKey(Bookings, on_delete=models.CASCADE, related_name='talents')
     name = models.CharField('name', max_length=100)
-    industry = models.CharField('industry', max_length=100)
+    industry = models.ForeignKey(Industry, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = 'booking talents'

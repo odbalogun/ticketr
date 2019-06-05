@@ -6,8 +6,9 @@
 <section class="banner" style="background-image: url('{% static 'images/talent.jpg' %}')">
   <div class="overlay">
     <div class="container">
-        <div class="first" style="margin-top: 2.3em;"><strong>Book a talent</strong>
-</div>
+        <div class="first" style="margin-top: 2.3em;"><strong>Book a talent</strong></div>
+    </div>
+  </div>
 </section>
 
   <div class="create-event">
@@ -41,7 +42,7 @@
                             <input type="text">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="form-wrap">
                             <label for="">Industry</label>
                             <select name="" id="">
@@ -129,7 +130,7 @@
         var maxField = 10; //Input fields increment limitation
         var addButton = $('.add_button'); //Add button selector
         var wrapper = $('.field_wrapper'); //Input field wrapper
-        // var fieldHTML = '<section style="position: relative;" class="remove-me"> <div class="row"> <div class="col-md-4"> <div class="form-wrap"> <label for="">Ticket Category</label> <select name="" id=""> <option value="">Gold</option> <option value="">Silver</option> <option value="">Bronze</option> </select> </div> </div> <div class="col-md-4"> <div class="form-wrap"> <label for="">Price</label> <input type="text"> </div> </div> <div class="col-md-3"> <div class="form-wrap"> <label for="">Amount</label> <input type="text"> </div> </div> <div class="col-md-11"> <div class="form-wrap"> <div class="label">Description</div> <textarea></textarea> </div> </div> </div> <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a></section>'; //New input field html 
+        // var fieldHTML = '<section style="position: relative;" class="remove-me"> <div class="row"> <div class="col-md-4"> <div class="form-wrap"> <label for="">Ticket Category</label> <select name="" id=""> <option value="">Gold</option> <option value="">Silver</option> <option value="">Bronze</option> </select> </div> </div> <div class="col-md-4"> <div class="form-wrap"> <label for="">Price</label> <input type="text"> </div> </div> <div class="col-md-3"> <div class="form-wrap"> <label for="">Amount</label> <input type="text"> </div> </div> <div class="col-md-11"> <div class="form-wrap"> <div class="label">Description</div> <textarea></textarea> </div> </div> </div> <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a></section>'; //New input field html
         var fieldHTML = `<section style="position: relative;"> 
                             <div class="row"> 
                               <div class="col-md-8"> 
@@ -150,7 +151,7 @@
                               </div>
                             </div>
                             <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a> 
-                          </section>`; //New input field html 
+                          </section>`; //New input field html
         var x = 1; //Initial field counter is 1
         
         //Once add button is clicked
