@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block pagecontent %}
-    <section class="banner" style="background-image: url('{% static 'images/b2.jpg' %}')">
+    <section class="banner" style="background-image: url('{% static 'images/b2.jpg' %}'); height: 450px;">
         <div class="overlay">
             <div class="container">
                 <div class="first"><strong>Connecting people</strong> together <br>through <strong>real life experiences.</strong> </div><br/>
@@ -59,7 +59,7 @@
             <div class="cards">
                 <div class="row">
                     {% for event in events %}
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="card-wrap">
                             <div class="card-img" style="background-image: url('{{ event.image.url }}')"></div>
                             <div class="card-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></div>
@@ -105,7 +105,7 @@
             <div class="cards">
                 <div class="row">
                     {% for cat in deal.options.all %}
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="card-wrap">
                             <div class="card-img" style="background-image: url('{{ cat.image.url }}')"></div>
                             <div class="card-title">Explore the city with our <strong>{{ cat.category.name }}</strong></div>

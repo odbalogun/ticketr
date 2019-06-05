@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pagecontent %}
+
+<section class="events">
+    <div class="container">
+       <div class="row">
+           <div class="col-md-10 offset-md-1">
+            <div class="filter-section">
+                <form action="">
+                    <select name="" id="">
+                        <option value="">Concert</option>
+                        <option value="">Sports</option>
+                        <option value="">Social</option>
+                        <option value="">Festival</option>
+                        <option value="">Fashion</option>
+                        <option value="">Night Life</option>
+                        <option value="">Technology</option>
+                        <option value="">Clubbing</option>
+                        <option value="">Shopping</option>
+                        <option value="">Religious</option>
+                        <option value="">Party</option>
+                        <option value="">Film</option>
+                        <option value="">Food</option>
+                        <option value="">Charity</option>
+                    </select>
+                </form>
+            </div>
+            <div class="event-list">
+                <div class="list">
+                    <div class="img-sec" style="background-image: url('{% static 'images/m1.jpg' %}')"></div>
+                    <div class="content-sec">
+                        <div class="title">
+                            This is my title right here
+                        </div>
+                        <div class="address">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                        </div>
+                    </div>
+                    <div class="time">
+                        Thu, <span class="big">Jun 06</span>, 3:00PM
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="img-sec" style="background-image: url('{% static 'images/m1.jpg' %}')"></div>
+                    <div class="content-sec">
+                        <div class="title">
+                            This is my title right here
+                        </div>
+                        <div class="address">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                        </div>
+                    </div>
+                    <div class="time">
+                        Thu, <span class="big">Jun 06</span>, 3:00PM
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="img-sec" style="background-image: url('{% static 'images/m1.jpg' %}')"></div>
+                    <div class="content-sec">
+                        <div class="title">
+                            This is my title right here
+                        </div>
+                        <div class="address">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                        </div>
+                    </div>
+                    <div class="time">
+                        Thu, <span class="big">Jun 06</span>, 3:00PM
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="img-sec" style="background-image: url('{% static 'images/m1.jpg' %}')"></div>
+                    <div class="content-sec">
+                        <div class="title">
+                            This is my title right here
+                        </div>
+                        <div class="address">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing.
+                        </div>
+                    </div>
+                    <div class="time">
+                        Thu, <span class="big">Jun 06</span>, 3:00PM
+                    </div>
+                </div>
+            </div>
+           </div>
+       </div>
+    </div>
+</section>
+
+{% endblock %}

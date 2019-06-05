@@ -282,6 +282,10 @@ header .menu-icon i {
   line-height: 28px;
   margin-bottom: 0;
 }
+.content .cards .card-wrap .card-title a {
+  color: #00374a;
+  text-decoration: none;
+}
 .content .cards .card-wrap .description {
   font-weight: 400;
   font-size: 15px;
@@ -1074,4 +1078,54 @@ footer ul.social-link li a {
   footer ul {
     text-align: center;
   }
+}
+.events {
+  padding: 5rem 0;
+  background: rgba(251, 251, 251, 0.8);
+}
+.events .filter-section {
+  text-align: right;
+}
+.events .filter-section select {
+  background: transparent;
+  border: 2px solid #e8e8e8;
+  color: #666;
+  height: 40px;
+  width: 13em;
+  padding: 0 10px;
+}
+.events .event-list {
+  margin-top: 4em;
+}
+.events .event-list .list {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+  width: 100%;
+  height: 15em;
+  display: flex;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+.events .event-list .list .img-sec {
+  position: relative;
+  width: 40%;
+  height: 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px 0 0 4px;
+}
+.events .event-list .list .content-sec {
+  width: 45%;
+  border-right: 1px solid #e8e8e8;
+  padding: 20px;
+}
+.events .event-list .list .content-sec .title {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 6rem;
+}
+.events .event-list .list .time {
+  width: 15%;
+  padding: 20px;
 }
