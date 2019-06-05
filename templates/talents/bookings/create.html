@@ -3,68 +3,117 @@
 
 {% block pagecontent %}
 
+<section class="banner" style="background-image: url('{% static 'images/talent.jpg' %}')">
+  <div class="overlay">
+    <div class="container">
+        <div class="first" style="margin-top: 2.3em;"><strong>Book a talent</strong>
+</div>
+</section>
+
   <div class="create-event">
     <div class="container">
       <div class="title">
-        From <strong>music festivals</strong> to <strong>conventions</strong>,
-        <strong>fashion runways</strong> to <strong>travel deals,</strong> we sell
-        them all!
+        We book all the best <strong>local</strong> and <strong>international</strong>,
+        talents from across <strong>music, art,fashion, sport, fitness and film</strong> and more for organizers.
       </div>
       <div class="caption">
-        Get started in minutes
+        
       </div>
-
+  
       <div class="form-info-sec">
         <div class="main-wrapper">
           <div class="form-title">
-            Basic Details
+            Talent
           </div>
           <div class="col-md-8 p-0">
             <div class="form-caption">
-              Name your event and tell event-goers why they should come. Add
-              details that highlight what makes it unique
+              Please indicate the name(s) of your talent of interest
             </div>
           </div>
         </div>
 
         <div class="field_wrapper">
-            <section style="position: relative; padding: 30px 30px 10px 30px; background: #fbfbfb; border-radius: 3px; margin-bottom: 2rem;">
+            <section style="position: relative;">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <div class="form-wrap">
-                            <label for="">Ticket Category</label>
-                            <select name="" id="">
-                                <option value="">Gold</option>
-                                <option value="">Silver</option>
-                                <option value="">Bronze</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-wrap">
-                            <label for="">Price</label>
+                            <label for="">Talent Name</label>
                             <input type="text">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-wrap">
-                            <label for="">Amount</label>
-                            <input type="text">
+                            <label for="">Industry</label>
+                            <select name="" id="">
+                                <option value="">Music</option>
+                                <option value="">Fashion</option>
+                                <option value="">Film</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="col-md-11">
-                        <div class="form-wrap">
-                            <div class="label">Description</div>
-                            <textarea></textarea>
-                        </div>
-                    </div>
+
                 </div>
                 <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="add_button" title="Add field"><i style="color: #28a745; font-size:26px" class="fas fa-plus-circle"></i></a>
             </section>
         </div>
 
+        <div class="main-wrapper">
+            <div class="form-title">
+              Other details
+            </div>
+            <div class="col-md-8 p-0">
+              <div class="form-caption">
+                Please indicate your proposed engagement date, budget spend, engagement scope and other key details
+              </div>
+            </div>
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-wrap">
+                          <label for="">Engagement Date (from)</label>
+                          <input type="text">
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-wrap">
+                          <label for="">Engagement Date (to)</label>
+                          <input type="text">
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-wrap">
+                          <label for="">Budget offer (from)</label>
+                          <input type="text">
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-wrap">
+                          <label for="">Budget offer (to)</label>
+                          <input type="text">
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-wrap">
+                        <label for="">Engagement scope / Purpose of booking</label>
+                        <textarea rows="10"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-wrap">
+                          <label for="">Venue / Location</label>
+                          <input type="text">
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-wrap">
+                        <label for="">Other details</label>
+                        <textarea rows="10"></textarea>
+                    </div>
+                  </div>
+              </div>
+            </div>
+
       <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12" style="margin-top: 1rem;">
               <button type="submit">Submit</button>
           </div>
       </div>
@@ -80,18 +129,39 @@
         var maxField = 10; //Input fields increment limitation
         var addButton = $('.add_button'); //Add button selector
         var wrapper = $('.field_wrapper'); //Input field wrapper
-        var fieldHTML = '<section style="position: relative; padding: 30px 30px 10px 30px; background: #fbfbfb; border-radius: 3px; margin-bottom: 2rem;" class="remove-me"> <div class="row"> <div class="col-md-4"> <div class="form-wrap"> <label for="">Ticket Category</label> <select name="" id=""> <option value="">Gold</option> <option value="">Silver</option> <option value="">Bronze</option> </select> </div> </div> <div class="col-md-4"> <div class="form-wrap"> <label for="">Price</label> <input type="text"> </div> </div> <div class="col-md-3"> <div class="form-wrap"> <label for="">Amount</label> <input type="text"> </div> </div> <div class="col-md-11"> <div class="form-wrap"> <div class="label">Description</div> <textarea></textarea> </div> </div> </div> <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a></section>'; //New input field html
+        // var fieldHTML = '<section style="position: relative;" class="remove-me"> <div class="row"> <div class="col-md-4"> <div class="form-wrap"> <label for="">Ticket Category</label> <select name="" id=""> <option value="">Gold</option> <option value="">Silver</option> <option value="">Bronze</option> </select> </div> </div> <div class="col-md-4"> <div class="form-wrap"> <label for="">Price</label> <input type="text"> </div> </div> <div class="col-md-3"> <div class="form-wrap"> <label for="">Amount</label> <input type="text"> </div> </div> <div class="col-md-11"> <div class="form-wrap"> <div class="label">Description</div> <textarea></textarea> </div> </div> </div> <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a></section>'; //New input field html 
+        var fieldHTML = `<section style="position: relative;"> 
+                            <div class="row"> 
+                              <div class="col-md-8"> 
+                                <div class="form-wrap"> 
+                                  <label for="">Talent Name</label> 
+                                    <input type="text"> 
+                                </div>
+                              </div> 
+                              <div class="col-md-3"> 
+                                <div class="form-wrap"> 
+                                  <label for="">Industry</label> 
+                                    <select name="" id=""> 
+                                      <option value="">Music</option> 
+                                      <option value="">Fashion</option> 
+                                      <option value="">Film</option> 
+                                    </select> 
+                                </div>
+                              </div>
+                            </div>
+                            <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a> 
+                          </section>`; //New input field html 
         var x = 1; //Initial field counter is 1
-
+        
         //Once add button is clicked
         $(addButton).click(function(){
             //Check maximum number of input fields
-            if(x < maxField){
+            if(x < maxField){ 
                 x++; //Increment field counter
                 $(wrapper).append(fieldHTML); //Add field html
             }
         });
-
+        
         //Once remove button is clicked
         $(wrapper).on('click', '.remove_button', function(e){
             e.preventDefault();
@@ -102,4 +172,3 @@
     </script>
 
 {% endblock %}
-
