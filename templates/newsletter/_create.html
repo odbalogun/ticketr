@@ -1,0 +1,14 @@
+{% load static %}
+<section class="newsletter">
+    <div class="container">
+        <div class="text">
+            Stay connected to us to know more about upcoming events, news updates, giveaways and more
+        </div>
+        <div class="form">
+            <form action="{% url 'newsletter:signup' %}" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Enter your email here" name="email">
+            </form>
+        </div>
+    </div>
+</section>

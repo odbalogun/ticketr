@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView, CreateView, ListView, DetailView, DeleteView
+from django.views.generic import ListView, DetailView, DeleteView
 from safedelete import HARD_DELETE_NOCASCADE
-from .models import Bookings, BookingTalents
+from .models import Bookings, Industry
 from .forms import BookingTalentFormSet, BookingForm
 
 
@@ -29,7 +29,8 @@ def create_talent_booking(request):
     else:
         form = BookingForm()
         formset = BookingTalentFormSet()
-    return render(request, 'talents/bookings/create.html', {'form': form, 'formset': formset})
+    return render(request, 'talents/bookings/create.html', {'form': form, 'formset': formset,
+                                                            'industries': Industry.objects.all()})
 
 
 class TalentListView(ListView):
@@ -46,20 +47,3 @@ class TalentDeleteView(DeleteView):
     model = Bookings
     template_name = "talents/bookings/confirm_delete.html"
     success_url = reverse_lazy("talents:list-bookings")
-
-
-# class DiscountListView(ListView):
-#     template_name = "discounts/list.html"
-#     queryset = Discounts.objects.all()
-#
-#
-# class DiscountUpdateView(UpdateView):
-#     form_class = DiscountForm
-#     model = Discounts
-#     success_url = reverse_lazy("discounts:list")
-#     template_name = "discounts/update.html"
-#
-#
-# class DiscountDetailView(DetailView):
-#     queryset = Discounts.objects.all()
-#     template_name = "discounts/detail.html"

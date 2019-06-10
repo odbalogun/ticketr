@@ -33,8 +33,16 @@ ALLOWED_HOSTS = ['94.237.88.29', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
-    'admin_interface',
-    'colorfield',
+    # 'admin_interface',
+    # 'colorfield',
+    # for django-adminlte
+    'crispy_forms',
+    'django_select2',
+    'easy_thumbnails',
+    'image_cropping',
+    'django_ajax',
+    'cruds_adminlte',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +57,8 @@ INSTALLED_APPS = [
     'talents',
     'events',
     'movies',
-    'pages'
+    'pages',
+    'newsletter'
 ]
 
 MIDDLEWARE = [
@@ -148,3 +157,13 @@ LOGIN_REDIRECT_URL = '/users/profile/'
 # path to media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# django cruds
+from easy_thumbnails.conf import Settings as thumbnail_settings
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+IMAGE_CROPPING_JQUERY_URL = None
+INTERNAL_IPS = ('127.0.0.1',)
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS

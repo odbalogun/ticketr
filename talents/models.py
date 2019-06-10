@@ -37,6 +37,9 @@ class Industry(SafeDeleteModel):
         verbose_name_plural = 'industries'
         verbose_name = 'industry'
 
+    def __str__(self):
+        return self.name
+
 
 class BookingTalents(SafeDeleteModel):
     booking = models.ForeignKey(Bookings, on_delete=models.CASCADE, related_name='talents')

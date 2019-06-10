@@ -20,105 +20,109 @@
       <div class="caption">
         
       </div>
-  
-      <div class="form-info-sec">
-        <div class="main-wrapper">
-          <div class="form-title">
-            Talent
-          </div>
-          <div class="col-md-8 p-0">
-            <div class="form-caption">
-              Please indicate the name(s) of your talent of interest
-            </div>
-          </div>
-        </div>
 
-        <div class="field_wrapper">
-            <section style="position: relative;">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-wrap">
-                            <label for="">Talent Name</label>
-                            <input type="text">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-wrap">
-                            <label for="">Industry</label>
-                            <select name="" id="">
-                                <option value="">Music</option>
-                                <option value="">Fashion</option>
-                                <option value="">Film</option>
-                            </select>
-                        </div>
-                    </div>
-
+      <form action="{% url 'talents:create-booking' %}" method="post">
+          {% csrf_token %}
+          {{ formset.management_form }}
+          <div class="form-info-sec">
+            <div class="main-wrapper">
+              <div class="form-title">
+                Talent
+              </div>
+              <div class="col-md-8 p-0">
+                <div class="form-caption">
+                  Please indicate the name(s) of your talent of interest
                 </div>
-                <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="add_button" title="Add field"><i style="color: #28a745; font-size:26px" class="fas fa-plus-circle"></i></a>
-            </section>
-        </div>
-
-        <div class="main-wrapper">
-            <div class="form-title">
-              Other details
-            </div>
-            <div class="col-md-8 p-0">
-              <div class="form-caption">
-                Please indicate your proposed engagement date, budget spend, engagement scope and other key details
-              </div>
-            </div>
-                <div class="row">
-                  <div class="col-md-6">
-                      <div class="form-wrap">
-                          <label for="">Engagement Date (from)</label>
-                          <input type="text">
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="form-wrap">
-                          <label for="">Engagement Date (to)</label>
-                          <input type="text">
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="form-wrap">
-                          <label for="">Budget offer (from)</label>
-                          <input type="text">
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="form-wrap">
-                          <label for="">Budget offer (to)</label>
-                          <input type="text">
-                      </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-wrap">
-                        <label for="">Engagement scope / Purpose of booking</label>
-                        <textarea rows="10"></textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                      <div class="form-wrap">
-                          <label for="">Venue / Location</label>
-                          <input type="text">
-                      </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-wrap">
-                        <label for="">Other details</label>
-                        <textarea rows="10"></textarea>
-                    </div>
-                  </div>
               </div>
             </div>
 
-      <div class="row">
-          <div class="col-md-12" style="margin-top: 1rem;">
-              <button type="submit">Submit</button>
+            <div class="field_wrapper">
+                <section style="position: relative;">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-wrap">
+                                <label for="">Talent Name</label>
+                                <input type="text" name="talents-0-name">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-wrap">
+                                <label for="">Industry</label>
+                                <select name="talents-0-industry">
+                                    {% for i in industries %}
+                                        <option value="{{ i.pk }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="add_button" title="Add field"><i style="color: #28a745; font-size:26px" class="fas fa-plus-circle"></i></a>
+                </section>
+            </div>
+
+            <div class="main-wrapper">
+                <div class="form-title">
+                  Other details
+                </div>
+                <div class="col-md-8 p-0">
+                  <div class="form-caption">
+                    Please indicate your proposed engagement date, budget spend, engagement scope and other key details
+                  </div>
+                </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-wrap">
+                              <label for="">Engagement Date (from)</label>
+                              <input type="text" name="start_date_time">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-wrap">
+                              <label for="">Engagement Date (to)</label>
+                              <input type="text" name="end_date_time">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-wrap">
+                              <label for="">Budget offer (from)</label>
+                              <input type="text" name="budget_from">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-wrap">
+                              <label for="">Budget offer (to)</label>
+                              <input type="text" name="budget_to">
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-wrap">
+                            <label for="">Engagement scope / Purpose of booking</label>
+                            <textarea rows="10" name="engagement_scope"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                          <div class="form-wrap">
+                              <label for="">Venue / Location</label>
+                              <input type="text" name="venue">
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-wrap">
+                            <label for="">Other details</label>
+                            <textarea rows="10" name="other_details"></textarea>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+          <div class="row">
+              <div class="col-md-12" style="margin-top: 1rem;">
+                  <button type="submit">Submit</button>
+              </div>
           </div>
-      </div>
-    </div>
+        </div>
+      </form>
   </div>
 
 
@@ -131,35 +135,36 @@
         var addButton = $('.add_button'); //Add button selector
         var wrapper = $('.field_wrapper'); //Input field wrapper
         // var fieldHTML = '<section style="position: relative;" class="remove-me"> <div class="row"> <div class="col-md-4"> <div class="form-wrap"> <label for="">Ticket Category</label> <select name="" id=""> <option value="">Gold</option> <option value="">Silver</option> <option value="">Bronze</option> </select> </div> </div> <div class="col-md-4"> <div class="form-wrap"> <label for="">Price</label> <input type="text"> </div> </div> <div class="col-md-3"> <div class="form-wrap"> <label for="">Amount</label> <input type="text"> </div> </div> <div class="col-md-11"> <div class="form-wrap"> <div class="label">Description</div> <textarea></textarea> </div> </div> </div> <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a></section>'; //New input field html
-        var fieldHTML = `<section style="position: relative;"> 
-                            <div class="row"> 
-                              <div class="col-md-8"> 
-                                <div class="form-wrap"> 
-                                  <label for="">Talent Name</label> 
-                                    <input type="text"> 
-                                </div>
-                              </div> 
-                              <div class="col-md-3"> 
-                                <div class="form-wrap"> 
-                                  <label for="">Industry</label> 
-                                    <select name="" id=""> 
-                                      <option value="">Music</option> 
-                                      <option value="">Fashion</option> 
-                                      <option value="">Film</option> 
-                                    </select> 
-                                </div>
-                              </div>
-                            </div>
-                            <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a> 
-                          </section>`; //New input field html
         var x = 1; //Initial field counter is 1
         
         //Once add button is clicked
         $(addButton).click(function(){
             //Check maximum number of input fields
-            if(x < maxField){ 
-                x++; //Increment field counter
+            if(x < maxField){
+                var fieldHTML = `<section style="position: relative;">
+                            <div class="row">
+                              <div class="col-md-8">
+                                <div class="form-wrap">
+                                  <label for="">Talent Name</label>
+                                    <input type="text" name="talents-` + x+ `-name">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-wrap">
+                                  <label for="">Industry</label>
+                                    <select name="talents-` + x + `-industry">
+                                      {% for i in industries %}
+                                        <option value="{{ i.pk }}">{{ i }}</option>
+                                      {% endfor %}
+                                    </select>
+                                </div>
+                              </div>
+                            </div>
+                            <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a>
+                          </section>`; //New input field html
+
                 $(wrapper).append(fieldHTML); //Add field html
+                x++; //Increment field counter
             }
         });
         

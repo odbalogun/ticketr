@@ -26,7 +26,7 @@
                                 <div class="col-md-6">
                                     <div class="form-wrap">
                                         <label for="">Search by location</label>
-                                        <input type="text" placeholder="Search deal" name="location">
+                                        <input type="text" placeholder="Search by location" name="location">
                                     </div>
                                 </div>
                                 <!--
@@ -163,19 +163,6 @@
     </section>
     {% endif %}
 
-    <!--
-    <section class="newsletter">
-        <div class="container">
-            <div class="text">
-                Stay connected to us to know more about upcoming events, news updates, giveaways and more
-            </div>
-            <div class="form">
-                <form action="">
-                    <input type="text" placeholder="Enter your email here">
-                </form>
-            </div>
-        </div>
-    </section>
-    -->
+    {% include "newsletter/_create.html" %}
 
 {% endblock %}
