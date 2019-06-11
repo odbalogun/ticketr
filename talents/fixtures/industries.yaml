@@ -5,6 +5,6 @@
 
 
 - model: talents.industry
-  pk: 1
+  pk: 2
   fields:
-    name: Music
+    name: Comedy
