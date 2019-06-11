@@ -81,22 +81,38 @@
 
 
 
-
+@font-face {
+    font-family: ticketr;
+    src: url(Clarendon/Clarendon-LT-Std-Light_10910.ttf);
+    font-weight: 400;
+}
 
 @font-face {
     font-family: ticketr;
-    src: url(gotham/tt0283m_5.ttf);
+    src: url(Clarendon/Clarendon-LT-Std-Roman_10911.ttf);
     font-weight: 500;
 }
 
 @font-face {
     font-family: ticketr;
-    src: url(gotham/tt0284m_5.ttf);
-    font-weight: 500;
+    src: url(Clarendon/ClarendonTMed.ttf);
+    font-weight: 600;
 }
 
 @font-face {
     font-family: ticketr;
-    src: url(gotham/tt0351m_5.ttf);
-    font-weight: bold;
+    src: url(Clarendon/tt0283m_5.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: ticketr;
+    src: url(Clarendon/tt0284m_5.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: ticketr;
+    src: url(Clarendon/tt0351m_5.ttf);
+    font-weight: 900;
 }
