@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'events',
     'movies',
     'pages',
-    'newsletter'
+    'newsletter',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -167,3 +168,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
+
+
+# for carts
+CART_SESSION_ID = 'cart'
