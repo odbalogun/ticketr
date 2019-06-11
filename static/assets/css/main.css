@@ -25,6 +25,7 @@ header {
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  position: relative;
 }
 header a.logo {
   line-height: 70px;
@@ -84,6 +85,21 @@ header nav ul li.create a {
   padding: 4px 19px;
   border-radius: 6px;
   background: #ffcd37;
+}
+header nav ul li.with-count {
+  position: relative;
+}
+header nav ul li.with-count span {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+  color: #fff;
+  top: -7px;
+  right: -7px;
+  text-align: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(0, 0, 0, 0.12);
 }
 header .menu-icon {
   position: absolute;
@@ -285,7 +301,6 @@ header .menu-icon i {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 .content .cards .card-wrap .card-title {
-  padding: 5px 15px;
   font-weight: 600;
   font-size: 20px;
   line-height: 28px;
@@ -295,10 +310,13 @@ header .menu-icon i {
   color: #00374a;
   text-decoration: none;
 }
+.content .cards .card-wrap .card-content-wrap {
+  padding: 10px 15px 15px 15px;
+}
 .content .cards .card-wrap .description {
   font-weight: 400;
   font-size: 15px;
-  padding: 0 15px 5px 15px;
+  padding-top: 5px;
 }
 .content .cards .card-wrap .description span {
   display: inline-block;
@@ -306,16 +324,16 @@ header .menu-icon i {
 }
 .content .cards .card-wrap .price {
   position: relative;
-  padding: 0 15px;
+  padding-top: 5px;
 }
 .content .cards .card-wrap .read-more {
   font-weight: 600;
   display: block;
   color: #00374a;
-  padding: 0 15px;
+  padding-top: 5px;
 }
 .content .cards .card-wrap .btn-wrap {
-  padding: 10px 15px;
+  padding-top: 5px;
 }
 .content .cards .card-wrap button.buy,
 .content .cards .card-wrap a.buy {
@@ -328,6 +346,7 @@ header .menu-icon i {
   outline: none;
   text-decoration: none;
   color: #000;
+  cursor: pointer;
 }
 .content .cards .card-wrap:hover {
   box-shadow: 0 4px 20px -2px #b5b5b5;
@@ -433,14 +452,17 @@ header .menu-icon i {
   padding: 5rem 20px 20px 20px;
 }
 .discover-more .cards .card-wrap .card-img .overlay .card-title {
-  padding: 10px 0 0 0;
   font-weight: 600;
   font-size: 25px;
+  margin-bottom: 0;
+}
+.discover-more .cards .card-wrap .card-img .overlay .card-content-wrap {
+  padding: 10px 15px 15px 15px;
 }
 .discover-more .cards .card-wrap .card-img .overlay .description {
   font-weight: 400;
   font-size: 16px;
-  padding-bottom: 10px;
+  padding-top: 5px;
 }
 .discover-more .cards .card-wrap .card-img .overlay .description span {
   display: inline-block;
@@ -450,12 +472,14 @@ header .menu-icon i {
 .discover-more .cards .card-wrap .card-img .overlay a.buy {
   display: inline-block;
   border: 1px solid transparent;
-  padding: 4px 15px;
+  padding-top: 5px;
   border-radius: 6px;
   background: #ffcd37;
   margin-right: 10px;
   outline: none;
   text-decoration: none;
+  margin-top: 10px;
+  cursor: pointer;
 }
 .newsletter {
   margin: 3rem 0;
@@ -486,42 +510,42 @@ header .menu-icon i {
   color: #fff;
   opacity: 1;
 }
-.modal-content.forms .ticketr-signup {
+.ticketr-signup {
   position: relative;
   text-align: center;
 }
-.modal-content.forms .ticketr-signup .logo img {
+.ticketr-signup .logo img {
   width: 140px;
 }
-.modal-content.forms .ticketr-signup .title {
+.ticketr-signup .title {
   font-weight: 600;
   font-size: 30px;
   color: #fff;
   padding: 0 10px;
   margin: 25px 0;
 }
-.modal-content.forms .ticketr-signup .form-content {
+.ticketr-signup .form-content {
   background: #fff;
   padding: 50px;
 }
-.modal-content.forms .ticketr-signup .form-content .form-wrap {
+.ticketr-signup .form-content .form-wrap {
   position: relative;
   margin-bottom: 10px;
 }
-.modal-content.forms .ticketr-signup .form-content .form-wrap label {
+.ticketr-signup .form-content .form-wrap label {
   display: block;
   font-weight: 500;
   margin-bottom: 1px;
   text-align: left;
 }
-.modal-content.forms .ticketr-signup .form-content .form-wrap input {
+.ticketr-signup .form-content .form-wrap input {
   width: 100%;
   outline: none;
   padding: 10px;
   border: 2px solid #999;
   background: #fff;
 }
-.modal-content.forms .ticketr-signup .form-content .form-wrap textarea {
+.ticketr-signup .form-content .form-wrap textarea {
   width: 100%;
   max-height: 100px;
   outline: none;
@@ -529,7 +553,7 @@ header .menu-icon i {
   border: 2px solid #999;
   background: #fff;
 }
-.modal-content.forms .ticketr-signup .form-content button {
+.ticketr-signup .form-content button {
   display: inline-block;
   border: 1px solid transparent;
   padding: 4px 15px;
@@ -542,16 +566,16 @@ header .menu-icon i {
   margin-top: 20px;
   font-weight: 600;
 }
-.modal-content.forms .ticketr-signup .terms {
+.ticketr-signup .terms {
   padding: 40px 10px;
   font-weight: 600;
   font-size: 18px;
   color: #fff;
 }
-.modal-content.forms .ticketr-signup .terms a {
+.ticketr-signup .terms a {
   color: #fff;
 }
-.modal-content.forms .ticketr-signup .with-account {
+.ticketr-signup .with-account {
   font-weight: 600;
   font-size: 18px;
   color: #fff;
@@ -559,7 +583,7 @@ header .menu-icon i {
   margin-bottom: 1rem;
   border-bottom: 1px solid #ffbc36;
 }
-.modal-content.forms .ticketr-signup .with-account a.button {
+.ticketr-signup .with-account a.button {
   display: inline-block;
   border: 1px solid transparent;
   padding: 2px 15px;
@@ -573,13 +597,13 @@ header .menu-icon i {
   color: #000;
   font-size: 15px;
 }
-.modal-content.forms .ticketr-signup .without-account {
+.ticketr-signup .without-account {
   font-weight: 600;
   font-size: 18px;
   color: #fff;
   padding-bottom: 10px;
 }
-.modal-content.forms .ticketr-signup .without-account a.button {
+.ticketr-signup .without-account a.button {
   display: inline-block;
   border: 1px solid transparent;
   padding: 2px 15px;
@@ -592,6 +616,16 @@ header .menu-icon i {
   margin-left: 20px;
   color: #000;
   font-size: 15px;
+}
+.ticketr-signup.standalone {
+  margin: 5rem 0;
+}
+.ticketr-signup.standalone .title {
+  color: #333;
+}
+.ticketr-signup.standalone .with-account,
+.ticketr-signup.standalone .without-account {
+  color: #333;
 }
 .modal-content.deals {
   min-height: 430px;
@@ -741,20 +775,27 @@ header .menu-icon i {
 .event-content .title {
   display: flex;
   margin-bottom: 40px;
-  margin-top: 40px;
+  font-family: "ticketr";
 }
 .event-content .title .line {
-  width: 85%;
-  border-top: 2px solid #f5d69c;
-  margin-top: 18px;
+  width: 30%;
+  border-top: 1px solid #ffbc36;
+  margin-top: 24px;
 }
 .event-content .title .text {
-  width: 15%;
+  width: 70%;
   padding: 0 20px;
   text-align: center;
-  font-weight: 600;
-  font-size: 25px;
-  color: #f5d69c;
+  font-weight: 700;
+  font-size: 30px;
+  font-family: "ticketr";
+}
+.event-content .title .text .italic {
+  font-family: "Pacifico", cursive;
+  color: #ffbc36;
+  font-style: italic;
+  font-weight: 100;
+  padding: 0 5px;
 }
 .event-content .create-event-button-wrap {
   text-align: center;
@@ -824,10 +865,10 @@ header .menu-icon i {
   text-align: right;
   text-decoration: none;
 }
-.table table tr td select {
+.table table tr td input {
   width: 60px;
   background: #fff;
-  border: 2px solid #efefef;
+  border: 2px solid #9999997a;
   padding: 5px 10px;
 }
 .create-event {
@@ -1103,7 +1144,7 @@ footer ul.social-link li a {
 }
 .events .filter-section select {
   background: transparent;
-  border: 2px solid #e8e8e8;
+  border: 2px solid #99999991;
   color: #666;
   height: 40px;
   width: 13em;

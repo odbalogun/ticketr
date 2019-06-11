@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import HomePageView, SignupPageView, VerifyEmailView, TestPageView, LoginPageView, LogoutPageView, \
-    ProfilePageView, CheckoutPageView, EventPageView
+    ProfilePageView, CheckoutPageView, EventPageView, StandaloneLoginPageView, StandaloneSignupPageView
 
 app_name = 'pages'
 
@@ -9,6 +9,8 @@ urlpatterns = [
     path('index/', HomePageView.as_view(), name='home'),
     path('talent/', TestPageView.as_view(), name='talent'),
     path('profile/', ProfilePageView.as_view(), name='profile'),
+    path('login-page/', StandaloneLoginPageView.as_view(), name='login'),
+    path('signup-page/', StandaloneSignupPageView.as_view(), name='signup'),
     path('checkout/', CheckoutPageView.as_view(), name='checkout'),
     path('event/', EventPageView.as_view(), name='event'),
     path('signup/', SignupPageView.as_view(), name='signup'),

@@ -17,6 +17,8 @@
             <div class="title">
                 <div class="line"></div>
                 <div class="text">{{ object }}</div>
+                <div class="line"></div>
+
             </div>
 
             <div class="content">
@@ -28,22 +30,27 @@
                             <div class="card-img" style="background-image: url('{% static 'images/1.jpg' %}')">
                                 <div class="category">{{ item.category }}</div>
                             </div>
-                            <div class="card-title">{{ item.summary }}</div>
-                            <div class="description">
-                                <span><i class="far fa-calendar-alt"></i> </span> Saturday, May 1st 2020
+                            <div class="card-content-wrap">
+
+                                    <div class="card-title">{{ item.summary }}</div>
+                                    <div class="description">
+                                        <span><i class="far fa-calendar-alt"></i> </span> Saturday, May 1st 2020
+                                    </div>
+                                    <div class="description">
+                                        <span><i class="far fa-clock"></i></span> 10pm till 5am
+                                    </div>
+                                    <div class="description">
+                                        <span><i class="fas fa-map-marker-alt"></i></span> LandMark Event Center, Oniru.
+                                    </div>
+                                    <div class="price">
+                                        <strong>Price:</strong> {{ item.display_price }}
+                                    </div>
+                                    <div class="btn-wrap">
+                                        <a ui-sref="singleEvent" data-toggle="modal" data-target="#deals" class="buy">View Details</a>
+                                    </div>
+
                             </div>
-                            <div class="description">
-                                <span><i class="far fa-clock"></i></span> 10pm till 5am
-                            </div>
-                            <div class="description">
-                                <span><i class="fas fa-map-marker-alt"></i></span> LandMark Event Center, Oniru.
-                            </div>
-                            <div class="price">
-                                <strong>Price:</strong> {{ item.display_price }}
-                            </div>
-                            <div class="btn-wrap">
-                                <a ui-sref="singleEvent" data-toggle="modal" data-target="#deals" class="buy">View Details</a>
-                            </div>
+                            
 
                         </div>
                     </div>

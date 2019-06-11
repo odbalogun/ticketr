@@ -27,6 +27,7 @@ header {
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  position: relative;
   a.logo {
     line-height: 70px;
     display: block;
@@ -88,6 +89,21 @@ header {
             border-radius: 6px;
             background: #ffcd37;
             // color: #fff!important;
+          }
+        }
+        &.with-count{
+          position: relative;
+          span{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+            color: #fff;
+            top: -7px;
+            right: -7px;
+            text-align: center;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05), 0 2px 5px 0 rgba(0, 0, 0, 0.12);
           }
         }
       }
@@ -303,7 +319,6 @@ header {
         }
       }
       .card-title {
-        padding: 5px 15px;
         font-weight: 600;
         font-size: 20px;
         line-height: 28px;
@@ -313,10 +328,13 @@ header {
           text-decoration: none;
         }
       }
+      .card-content-wrap{
+        padding: 10px 15px 15px 15px;
+      }
       .description {
         font-weight: 400;
         font-size: 15px;
-        padding: 0 15px 5px 15px;
+        padding-top: 5px;
         span{
           display: inline-block;
           margin-right: 5px;
@@ -324,16 +342,16 @@ header {
       }
       .price {
         position: relative;
-        padding: 0 15px;
+        padding-top: 5px;
       }
       .read-more {
         font-weight: 600;
         display: block;
         color: #00374a;
-        padding: 0 15px;
+        padding-top: 5px;
       }
       .btn-wrap {
-        padding: 10px 15px;
+        padding-top: 5px;
       }
       button.buy,
       a.buy {
@@ -346,6 +364,7 @@ header {
         outline: none;
         text-decoration: none;
         color: #000;
+        cursor: pointer;
       }
       &:hover{
         box-shadow: 0 4px 20px -2px #b5b5b5;
@@ -460,14 +479,17 @@ header {
           background-color: rgba(0, 0, 0, 0.7);
           padding: 5rem 20px 20px 20px;
           .card-title {
-            padding: 10px 0 0 0;
             font-weight: 600;
             font-size: 25px;
+            margin-bottom: 0;
+          }
+          .card-content-wrap{
+            padding: 10px 15px 15px 15px;
           }
           .description {
             font-weight: 400;
             font-size: 16px;
-            padding-bottom: 10px;
+            padding-top: 5px;
             span{
               display: inline-block;
               margin-right: 5px;
@@ -477,12 +499,14 @@ header {
           a.buy {
             display: inline-block;
             border: 1px solid transparent;
-            padding: 4px 15px;
+            padding-top: 5px;
             border-radius: 6px;
             background: #ffcd37;
             margin-right: 10px;
             outline: none;
             text-decoration: none;
+            margin-top: 10px;
+            cursor: pointer;
           }
         }
       }
@@ -519,113 +543,123 @@ header {
       opacity: 1;
     }
   }
-  .ticketr-signup {
-    position: relative;
-    text-align: center;
-    .logo {
-      img {
-        width: 140px;
-      }
+}
+
+.ticketr-signup {
+  position: relative;
+  text-align: center;
+  .logo {
+    img {
+      width: 140px;
     }
-    .title {
-      font-weight: 600;
-      font-size: 30px;
-      color: #fff;
-      padding: 0 10px;
-      margin: 25px 0;
-    }
-    .form-content {
-      background: #fff;
-      padding: 50px;
-      .form-wrap {
-        position: relative;
-        margin-bottom: 10px;
-        label {
-          display: block;
-          font-weight: 500;
-          margin-bottom: 1px;
-          text-align: left;
-        }
-        input {
-          width: 100%;
-          outline: none;
-          padding: 10px;
-          border: 2px solid #999;
-          background: #fff;
-        }
-        textarea {
-          width: 100%;
-          max-height: 100px;
-          outline: none;
-          padding: 10px;
-          border: 2px solid #999;
-          background: #fff;
-        }
+  }
+  .title {
+    font-weight: 600;
+    font-size: 30px;
+    color: #fff;
+    padding: 0 10px;
+    margin: 25px 0;
+  }
+  .form-content {
+    background: #fff;
+    padding: 50px;
+    .form-wrap {
+      position: relative;
+      margin-bottom: 10px;
+      label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 1px;
+        text-align: left;
       }
-      button {
-        display: inline-block;
-        border: 1px solid transparent;
-        padding: 4px 15px;
-        border-radius: 6px;
-        background: #ffcd37;
-        margin-right: 10px;
+      input {
+        width: 100%;
         outline: none;
-        text-decoration: none;
-        font-weight: 400;
-        margin-top: 20px;
-        font-weight: 600;
+        padding: 10px;
+        border: 2px solid #999;
+        background: #fff;
       }
-    }
-    .terms {
-      padding: 40px 10px;
-      font-weight: 600;
-      font-size: 18px;
-      color: #fff;
-      a {
-        color: #fff;
-      }
-    }
-    .with-account {
-      font-weight: 600;
-      font-size: 18px;
-      color: #fff;
-      padding-bottom: 10px;
-      margin-bottom: 1rem;
-      a.button {
-        display: inline-block;
-        border: 1px solid transparent;
-        padding: 2px 15px;
-        border-radius: 6px;
-        background: #ffcd37;
-        margin-right: 10px;
+      textarea {
+        width: 100%;
+        max-height: 100px;
         outline: none;
-        text-decoration: none;
-        font-weight: 400;
-        margin-left: 20px;
-        color: #000;
-        font-size: 15px;
+        padding: 10px;
+        border: 2px solid #999;
+        background: #fff;
       }
-      border-bottom: 1px solid #ffbc36;
     }
-    .without-account {
+    button {
+      display: inline-block;
+      border: 1px solid transparent;
+      padding: 4px 15px;
+      border-radius: 6px;
+      background: #ffcd37;
+      margin-right: 10px;
+      outline: none;
+      text-decoration: none;
+      font-weight: 400;
+      margin-top: 20px;
       font-weight: 600;
-      font-size: 18px;
+    }
+  }
+  .terms {
+    padding: 40px 10px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    a {
       color: #fff;
-      padding-bottom: 10px;
-      a.button {
-        display: inline-block;
-        border: 1px solid transparent;
-        padding: 2px 15px;
-        border-radius: 6px;
-        background: #ffcd37;
-        margin-right: 10px;
-        outline: none;
-        text-decoration: none;
-        font-weight: 400;
-        margin-left: 20px;
-        color: #000;
-        font-size: 15px;
-      }
+    }
+  }
+  .with-account {
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    padding-bottom: 10px;
+    margin-bottom: 1rem;
+    a.button {
+      display: inline-block;
+      border: 1px solid transparent;
+      padding: 2px 15px;
+      border-radius: 6px;
+      background: #ffcd37;
+      margin-right: 10px;
+      outline: none;
+      text-decoration: none;
+      font-weight: 400;
+      margin-left: 20px;
+      color: #000;
+      font-size: 15px;
+    }
+    border-bottom: 1px solid #ffbc36;
+  }
+  .without-account {
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    padding-bottom: 10px;
+    a.button {
+      display: inline-block;
+      border: 1px solid transparent;
+      padding: 2px 15px;
+      border-radius: 6px;
+      background: #ffcd37;
+      margin-right: 10px;
+      outline: none;
+      text-decoration: none;
+      font-weight: 400;
+      margin-left: 20px;
+      color: #000;
+      font-size: 15px;
+    }
+  }
+  &.standalone{
+    margin: 5rem 0;
+    .title{
+      color: #333;
+    }
+    .with-account, .without-account{
+      color: #333
     }
   }
 }
@@ -786,19 +820,26 @@ header {
   .title {
     display: flex;
     margin-bottom: 40px;
-    margin-top: 40px;
+    font-family: "ticketr";
     .line {
-      width: 85%;
-      border-top: 2px solid #f5d69c;
-      margin-top: 18px;
+      width: 30%;
+      border-top: 1px solid #ffbc36;
+      margin-top: 24px;
     }
     .text {
-      width: 15%;
+      width: 70%;
       padding: 0 20px;
       text-align: center;
-      font-weight: 600;
-      font-size: 25px;
-      color: #f5d69c;
+      font-weight: 700;
+      font-size: 30px;
+      font-family: "ticketr";
+      .italic {
+        font-family: "Pacifico", cursive;
+        color: #ffbc36;
+        font-style: italic;
+        font-weight: 100;
+        padding: 0 5px;
+      }
     }
   }
   .create-event-button-wrap{
@@ -871,10 +912,10 @@ header {
           text-align: right;
           text-decoration: none;
         }
-        select {
+        input {
           width: 60px;
           background: #fff;
-          border: 2px solid #efefef;
+          border: 2px solid #9999997a;
           padding: 5px 10px;
         }
       }
@@ -1158,7 +1199,7 @@ footer {
     text-align: right;
     select{
       background: transparent;
-      border: 2px solid #e8e8e8;
+      border: 2px solid #99999991;
       color: #666;
       height: 40px;
       width: 13em;
