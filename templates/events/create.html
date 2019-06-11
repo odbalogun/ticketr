@@ -191,61 +191,31 @@
                           <div class="col-md-4">
                               <div class="form-wrap">
                                   <label for="">Ticket Name</label>
-                                  <input type="text">
+                                  <input type="text" name="tickets-0-name">
                               </div>
                           </div>
                           <div class="col-md-4">
                               <div class="form-wrap">
                                   <label for="">Price</label>
-                                  <input type="text">
+                                  <input type="text" name="tickets-0-price">
                               </div>
                           </div>
                           <div class="col-md-3">
                               <div class="form-wrap">
                                   <label for="">Quantity</label>
-                                  <input type="number" value="0" min="0">
+                                  <input type="number" value="1" min="1" name="tickets-0-quantity">
                               </div>
                           </div>
                           <div class="col-md-11">
                               <div class="form-wrap">
-                                  <div class="label">Description</div>
-                                  <textarea></textarea>
+                                  <label class="label">Description</label>
+                                  <textarea name="tickets-0-details"></textarea>
                               </div>
                           </div>
                       </div>
                       <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="add_button" title="Add field"><i style="color: #28a745; font-size:26px" class="fas fa-plus-circle"></i></a>
                   </section>
               </div>
-                <!-- {{ formset.management_form }}
-                {% for ticket in formset %}
-                    <div class="col-md-8 p-0">
-                      <div class="form-caption">
-                        Enter ticket details
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-wrap">
-                            {{ ticket.name }}
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-wrap">
-                            {{ ticket.details }}
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-wrap">
-                            {{ ticket.price }}
-                        </div>
-                      </div>
-                        <div class="col-md-3">
-                        <div class="form-wrap">
-                            {{ ticket.quantity }}
-                        </div>
-                      </div>
-                    </div>
-                {% endfor %} -->
             </div>
 
             <div class="row">
@@ -264,43 +234,44 @@
         var maxField = 10; //Input fields increment limitation
         var addButton = $('.add_button'); //Add button selector
         var wrapper = $('.field_wrapper'); //Input field wrapper
-        var fieldHTML = `<section style="margin-bottom: 2rem;position: relative;" class="remove-me"> 
-                          <div class="row">
-                              <div class="col-md-4">
-                                  <div class="form-wrap">
-                                      <label for="">Ticket Name</label>
-                                      <input type="text">
-                                  </div>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="form-wrap">
-                                      <label for="">Price</label>
-                                      <input type="text">
-                                  </div>
-                              </div>
-                              <div class="col-md-3">
-                                  <div class="form-wrap">
-                                      <label for="">Quantity</label>
-                                      <input type="number" value="0" min="0">
-                                  </div>
-                              </div>
-                              <div class="col-md-11">
-                                  <div class="form-wrap">
-                                      <div class="label">Description</div>
-                                      <textarea></textarea>
-                                  </div>
-                              </div>
-                          </div>
-                          <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a>
-                      </section>`; //New input field html
+
         var x = 1; //Initial field counter is 1
 
         //Once add button is clicked
         $(addButton).click(function(){
             //Check maximum number of input fields
             if(x < maxField){
-                x++; //Increment field counter
+                var fieldHTML = `<section style="margin-bottom: 2rem;position: relative;" class="remove-me">
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <div class="form-wrap">
+                                      <label for="">Ticket Name</label>
+                                      <input type="text" name="tickets-` + x + `-name">
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-wrap">
+                                      <label for="">Price</label>
+                                      <input type="text" name="tickets-` + x + `-price">
+                                  </div>
+                              </div>
+                              <div class="col-md-3">
+                                  <div class="form-wrap">
+                                      <label for="">Quantity</label>
+                                      <input type="number" value="1" min="1" name="tickets-` + x + `-quantity">
+                                  </div>
+                              </div>
+                              <div class="col-md-11">
+                                  <div class="form-wrap">
+                                      <label class="label">Description</label>
+                                      <textarea name="tickets-` + x + `-details"></textarea>
+                                  </div>
+                              </div>
+                          </div>
+                          <a style="position: absolute; right: 20px; top: 23px;" href="javascript:void(0);" class="remove_button" title="Remove field"><i style="color: #c82333;font-size:26px" class="fas fa-minus-circle"></i></a>
+                      </section>`; //New input field html
                 $(wrapper).append(fieldHTML); //Add field html
+                x++; //Increment field counter
             }
         });
 

@@ -94,7 +94,7 @@ class Ticket(SafeDeleteModel):
     name = models.CharField('name', max_length=100)
     details = models.TextField('details', null=True, blank=True)
     price = models.DecimalField('price', decimal_places=2, max_digits=10)
-    quantity = models.IntegerField('qty', default=0)
+    quantity = models.IntegerField('qty', default=1)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='tickets')
 
     class Meta:
