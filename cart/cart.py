@@ -19,6 +19,50 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID] = {'events': {}, 'movies': {}, 'deals': {}}
         self.cart = cart
 
+    def __len__(self):
+        """
+        Count all items in the cart.
+        """
+        total = 0
+
+        for key in self.cart.keys():
+            for item in self.cart[key].values():
+                total += item['quantity']
+
+        return total
+
+    def __iter__(self):
+        """
+        Iterate over the items in the cart and get the products
+        from the database.
+        """
+        for item_type in self.cart.keys():
+            product_ids = self.cart[item_type].keys()
+
+            if item_type == 'movies':
+                products = Movie.objects.filter(id__in=product_ids)
+            elif item_type == 'events':
+                products = Ticket.objects.filter(id__in=product_ids)
+            elif item_type == 'deals':
+                products = DealCategories.objects.filter(id__in=product_ids)
+            else:
+                raise TypeError("Invalid item type: {}".format(item_type))
+
+            # get the product objects and add them to the cart
+            for product in products:
+                self.cart[item_type][str(product.id)]['product'] = product
+
+        for key in self.cart.keys():
+            for item in self.cart[key].values():
+                item['price'] = Decimal(item['price'])
+                item['total_price'] = item['price'] * item['quantity']
+                yield item
+
+    def clear(self):
+        # remove cart from session
+        del self.session[settings.CART_SESSION_ID]
+        self.session.modified = True
+
     def add(self, product, item_type, quantity=1, update_quantity=False):
         """
         Add a product to the cart or update its quantity.
@@ -53,29 +97,9 @@ class Cart(object):
             del self.cart[item_type][product_id]
             self.save()
 
-    def __iter__(self):
-        """
-        Iterate over the items in the cart and get the products
-        from the database.
-        """
-        for item_type in self.cart.keys():
-            product_ids = self.cart[item_type].keys()
-
-            if item_type == 'movies':
-                products = Movie.objects.filter(id__in=product_ids)
-            elif item_type == 'events':
-                products = Ticket.objects.filter(id__in=product_ids)
-            elif item_type == 'deals':
-                products = DealCategories.objects.filter(id__in=product_ids)
-            else:
-                raise TypeError("Invalid item type: {}".format(item_type))
-
-            # get the product objects and add them to the cart
-            for product in products:
-                self.cart[item_type][str(product.id)]['product'] = product
-
+    def get_total_price(self):
+        total = 0
         for key in self.cart.keys():
             for item in self.cart[key].values():
-                item['price'] = Decimal(item['price'])
-                item['total_price'] = item['price'] * item['quantity']
-                yield item
+                total += Decimal(item['price']) * item['quantity']
+        return total
