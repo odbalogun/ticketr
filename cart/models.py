@@ -9,7 +9,9 @@ class Order(SafeDeleteModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     code = models.CharField('order code', max_length=50)
     status = models.CharField('status', max_length=50, default='open')
-    total_price = models.CharField()
+    total_price = models.DecimalField('price', decimal_places=2, max_digits=10)
+    payment_status = models.CharField('payment status', max_length=50, default='pending')
+    payment_reference = models.CharField('payment reference', max_length=50, blank=True, null=True)
     created_at = models.DateTimeField('created at', auto_now_add=True)
 
 
