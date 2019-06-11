@@ -3,6 +3,7 @@ from safedelete.models import SafeDeleteModel
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.conf import settings
+from ticketr.unique_slug import unique_slugify
 import datetime
 
 
@@ -33,7 +34,7 @@ class Category(SafeDeleteModel):
 
     def save(self, *args, **kwargs):
         # Overwrite save to allow for slug creation
-        self.slug = slugify(self.name)
+        unique_slugify(self, self.name)
         super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -75,7 +76,7 @@ class Event(SafeDeleteModel):
 
     def save(self, *args, **kwargs):
         # Overwrite save to allow for slug creation
-        self.slug = slugify(self.title)
+        unique_slugify(self, self.title)
         super(Event, self).save(*args, **kwargs)
 
     @property

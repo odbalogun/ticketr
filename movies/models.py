@@ -2,6 +2,7 @@ from django.db import models
 from safedelete.models import SafeDeleteModel
 from django.template.defaultfilters import slugify
 from django.conf import settings
+from ticketr.unique_slug import unique_slugify
 import datetime
 
 
@@ -45,5 +46,5 @@ class Movie(SafeDeleteModel):
 
     def save(self, *args, **kwargs):
         # Overwrite save to allow for slug creation
-        self.slug = slugify(self.title)
+        unique_slugify(self, self.title)
         super(Movie, self).save(*args, **kwargs)

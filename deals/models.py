@@ -2,6 +2,7 @@ from django.db import models
 from safedelete.models import SafeDeleteModel
 from django.template.defaultfilters import slugify
 from django.conf import settings
+from ticketr.unique_slug import unique_slugify
 import datetime
 
 
@@ -20,7 +21,7 @@ class Categories(SafeDeleteModel):
 
     def save(self, *args, **kwargs):
         # Overwrite save to allow for slug creation
-        self.slug = slugify(self.name)
+        unique_slugify(self, self.name)
         super(Categories, self).save(*args, **kwargs)
 
 
@@ -38,7 +39,7 @@ class Deals(SafeDeleteModel):
 
     def save(self, *args, **kwargs):
         # Overwrite save to allow for slug creation
-        self.slug = slugify(self.name)
+        unique_slugify(self, self.name)
         super(Deals, self).save(*args, **kwargs)
 
     class Meta:
