@@ -79,25 +79,27 @@
                     <div class="col-md-4">
                         <div class="card-wrap">
                             <div class="card-img" style="background-image: url('{{ event.image.url }}')"></div>
-                            <div class="card-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></div>
-                            <div class="description">
-                                <span><i class="far fa-calendar-alt"></i> </span> {{ event.start_date | date:'l, M jS  Y' }}
-                            </div>
-                            <div class="description">
-                                <span><i class="far fa-clock"></i></span> {{ event.start_time | date:'H:i a' }}
-                            </div>
-                            <div class="description">
-                                <span><i class="fas fa-map-marker-alt"></i></span> {{ event.venue }}
-                            </div>
-                            {% for ticket in event.tickets.all %}
-                            <div class="price">
-                                <strong>{{ ticket.name }}:</strong> {{ ticket.display_price }}
-                            </div>
-                            {% endfor %}
-                            <a class="read-more" href="{{ event.get_absolute_url }}">Read More</a>
-                            <div class="btn-wrap">
-                                <a ui-sref="singleEvent" class="buy">Buy Ticket</a>
-                                <a ui-sref="/" class="buy">Share Details</a>
+                            <div class="card-content-wrap">
+                                <div class="card-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></div>
+                                <div class="description">
+                                    <span><i class="far fa-calendar-alt"></i> </span> {{ event.start_date | date:'l, M jS  Y' }}
+                                </div>
+                                <div class="description">
+                                    <span><i class="far fa-clock"></i></span> {{ event.start_time | date:'H:i a' }}
+                                </div>
+                                <div class="description">
+                                    <span><i class="fas fa-map-marker-alt"></i></span> {{ event.venue }}
+                                </div>
+                                {% for ticket in event.tickets.all %}
+                                <div class="price">
+                                    <strong>{{ ticket.name }}:</strong> {{ ticket.display_price }}
+                                </div>
+                                {% endfor %}
+                                <!-- <a class="read-more" href="{{ event.get_absolute_url }}">Read More</a> -->
+                                <div class="btn-wrap">
+                                    <a href="{{ event.get_absolute_url }}" class="buy">Buy Ticket</a>
+                                    <a href="/" class="buy">Share Details</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -125,17 +127,18 @@
                     <div class="col-md-4">
                         <div class="card-wrap">
                             <div class="card-img" style="background-image: url('{{ cat.image.url }}')"></div>
-                            <div class="card-title">Explore the city with our <strong>{{ cat.category.name }}</strong></div>
-                            <div class="description">
-                                {{ cat.summary }}
-                            </div>
+                            <div class="card-content-wrap">
+                                <div class="card-title">Explore the city with our <strong>{{ cat.category.name }}</strong></div>
+                                <div class="description">
+                                    {{ cat.summary }}
+                                </div>
 
-                            <a class="read-more" href="#">Read More</a>
-                            <div class="btn-wrap">
-                                <button class="buy">Book now</button>
-                            <button class="buy">Share Details</button>
+                                <a class="read-more" href="#">Read More</a>
+                                <div class="btn-wrap">
+                                    <button class="buy">Book now</button>
+                                <button class="buy">Share Details</button>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                     {% endfor %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pagecontent %}
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+                <div class="ticketr-signup standalone">
+                        <div class="logo">
+                            <img src="{% static 'images/ticketr_logo_transparent.png' %}" alt="">
+            
+                        </div>
+                        <div class="title">Login and start selling your tickets, in minutes!</div>
+                        <div class="form-content">
+                            <form action="{% url 'pages:login' %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-wrap">
+                                    <label for="">Email</label>
+                                    <input type="text" name="username" placeholder="Enter your email">
+                                </div>
+                                <div class="form-wrap">
+                                    <label for="">Password</label>
+                                    <input type="password" name="password" placeholder="Enter your password">
+                                </div>
+                                <button type="submit">Login</button>
+                            </form>
+                        </div><br><br>
+                        <div class="with-account">
+                            Don't have an account? Please <a class="button" href="#">Sign up</a>
+                        </div>
+                        <div class="without-account">
+                            Looking to buy tickets? lets <a class="button" href="#">Shop tickets</a>
+                        </div>
+                    </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

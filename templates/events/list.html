@@ -1,5 +1,7 @@
-{% block content %}
-    <br/>
+{% extends 'base.html' %}
+{% load static %}
+{% block pagecontent %}
+    <!-- <br/>
     <ul>
         {% for item in object_list %}
             <li><a href="{{ item.get_absolute_url }}">{{ item.pk }} - {{ item.title }} - {{ item.slug }}</a></li>
@@ -8,5 +10,74 @@
         {% endfor %}
     </ul>
     <hr/>
-    <a href="{% url 'events:create' %}">Create new event</a>
+    <a href="{% url 'events:create' %}">Create new event</a> -->
+    <section class="bxslider">
+            <div class="banner" style="background-image: url('{% static 'images/et.jpg' %}'); height: 450px;">
+                <div class="overlay">
+                    <div class="container">
+                        <div class="first">Get <strong>your seat at all <br>the hottest events</strong> around! </div><br/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section class="events">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="filter-section">
+                    <form action="">
+                        <select name="" id="">
+                            <option value="">Concert</option>
+                            <option value="">Sports</option>
+                            <option value="">Social</option>
+                            <option value="">Festival</option>
+                            <option value="">Fashion</option>
+                            <option value="">Night Life</option>
+                            <option value="">Technology</option>
+                            <option value="">Clubbing</option>
+                            <option value="">Shopping</option>
+                            <option value="">Religious</option>
+                            <option value="">Party</option>
+                            <option value="">Film</option>
+                            <option value="">Food</option>
+                            <option value="">Charity</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="content">
+                    <div class="cards">
+                        <div class="row">
+                            {% for x in x|rjust:10 %}
+                            <div class="col-md-4">
+                                <div class="card-wrap">
+                                    <div class="card-img" style="background-image: url('{% static 'images/h1.jpg' %}')"></div>
+                                    <div class="card-content-wrap">
+                                        <div class="card-title"><a href="#">My events great</a></div>
+                                        <div class="description">
+                                            <span><i class="far fa-calendar-alt"></i> </span> Tuesday, Jun 11th 2019
+                                        </div>
+                                        <div class="description">
+                                            <span><i class="far fa-clock"></i></span> 00:00 a.m.
+                                        </div>
+                                        <div class="description">
+                                            <span><i class="fas fa-map-marker-alt"></i></span> Ilasan road, Lagos
+                                        </div>
+                                        <div class="price">
+                                            <strong>Real great:</strong> NGN2,000.00
+                                        </div>
+                                        <div class="btn-wrap">
+                                            <a href="#" class="buy">Buy Ticket</a>
+                                            <a href="/" class="buy">Share Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
