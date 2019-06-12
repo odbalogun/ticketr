@@ -17,10 +17,6 @@ class CheckoutPageView(TemplateView):
     template_name = "pages/checkout.html"
 
 
-class EventPageView(TemplateView):
-    template_name = "pages/event.html"
-
-
 class HomePageView(TemplateView):
     template_name = "pages/index.html"
 

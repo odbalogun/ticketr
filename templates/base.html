@@ -59,7 +59,7 @@
                                         <li ng-class="{ active: isActive('/movies')}"><a href="{% url 'movies:list' %}">Movies tickets</a></li>
                                         <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="{% url 'deals:list' %}">Buy a deal</a></li>
                                         <li ng-class="{ active: isActive('/book-a-talent')}"><a href="{% url 'talents:create-booking' %}">Book a talent</a></li>
-                                        <li class="with-count"><a href="#">Cart <span title="0">0</span> </a></li>
+                                        <li class="with-count"><a href="{% url 'pages:checkout' %}">Cart <span title="0">0</span> </a></li>
                                         {% if not request.user.is_authenticated %}
                                             <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Login</a></li>
                                             <li ng-class="{ active: isActive('/book-a-talent')}"><a data-toggle="modal" data-target="#exampleModal" href="javascript:void(0)">Sign up</a></li>
