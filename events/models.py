@@ -66,7 +66,8 @@ class Event(SafeDeleteModel):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, related_name='events', null=True)
     created_at = models.DateTimeField('created at', auto_now_add=True)
     organizer_name = models.CharField('organizer', max_length=100, null=True, blank=True)
-    organizer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    organizer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True,
+                                  related_name='my_events')
     venue = models.ForeignKey(Venue, on_delete=models.SET_NULL, null=True, related_name='events')
     start_date = models.DateField('event starts')
     start_time = models.TimeField('start time')

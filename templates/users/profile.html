@@ -5,8 +5,10 @@
 
 <section class="event-content">
     <div class="container">
-        <div class="col-md-6 col-sm-12 p-0"> <div class="event-title">{{ request.user.company }}</div></div>
-        <div class="caption">By God's Children of Memphis </div>
+        <div class="col-md-6 col-sm-12 p-0"> <div class="event-title">{{ request.user }}</div></div>
+        {% if request.user.address %}
+        <div class="caption">{{ request.user.address }}</div>
+        {% endif %}
 
         <div class="title">
             <div class="line" style="width: 75%;"></div>
@@ -16,72 +18,32 @@
         <div class="content">
            <div class="cards">
             <div class="row">
-                <div class="col-md-4">
+                {% for event in request.user.my_events.all %}
+                    <div class="col-md-4">
                     <div class="card-wrap">
-                        <div class="card-img" style="background-image: url('{% static 'images/1.jpg' %}')"></div>
-                        <div class="card-title">The Lagos Ultimate Party 2019</div>
+                        <div class="card-img" style="background-image: url('{{ event.image.url }}')"></div>
+                        <div class="card-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></div>
                         <div class="description">
-                            <span><i class="far fa-calendar-alt"></i> </span> Saturday, May 1st 2020
-                        </div>
-                        <div class="description">
-                            <span><i class="far fa-clock"></i></span> 10pm till 5am
+                            <span><i class="far fa-calendar-alt"></i> </span> {{ event.start_date | date:'l, M jS  Y' }}
                         </div>
                         <div class="description">
-                            <span><i class="fas fa-map-marker-alt"></i></span> LandMark Event Center, Oniru.
+                            <span><i class="far fa-clock"></i></span> {{ event.start_time | date:'H:i a' }}
                         </div>
-                        <div class="price">
-                            <strong>Regular:</strong> N5,000
+                        <div class="description">
+                            <span><i class="fas fa-map-marker-alt"></i></span> {{ event.venue }}
                         </div>
-                        <div class="price">
-                            <strong>Regular:</strong> N10,000
-                        </div><br/>
+                        {% for ticket in event.tickets.all %}
+                            <div class="price">
+                                <strong>{{ ticket.name }}:</strong> {{ ticket.display_price }}
+                            </div>
+                        {% endfor %}
+                        <br/>
 
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card-wrap">
-                        <div class="card-img" style="background-image: url('{% static 'images/1.jpg' %}')"></div>
-                        <div class="card-title">The Lagos Ultimate Party 2019</div>
-                        <div class="description">
-                            <span><i class="far fa-calendar-alt"></i> </span>    Saturday, May 1st 2020
-                        </div>
-                        <div class="description">
-                            <span><i class="far fa-clock"></i></span>    10pm till 5am
-                        </div>
-                        <div class="description">
-                            <span><i class="fas fa-map-marker-alt"></i></span> LandMark Event Center, Oniru.
-                        </div>
-                        <div class="price">
-                            <strong>Regular:</strong> N5,000
-                        </div>
-                        <div class="price">
-                            <strong>Regular:</strong> N10,000
-                        </div><br/>
-                        
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-wrap">
-                        <div class="card-img" style="background-image: url('{% static 'images/1.jpg' %}')"></div>
-                        <div class="card-title">The Lagos Ultimate Party 2019</div>
-                        <div class="description">
-                            <span><i class="far fa-calendar-alt"></i> </span>    Saturday, May 1st 2020
-                        </div>
-                        <div class="description">
-                            <span><i class="far fa-clock"></i></span>    10pm till 5am
-                        </div>
-                        <div class="description">
-                            <span><i class="fas fa-map-marker-alt"></i></span> LandMark Event Center, Oniru.
-                        </div>
-                        <div class="price">
-                            <strong>Regular:</strong> N5,000
-                        </div>
-                        <div class="price">
-                            <strong>Regular:</strong> N10,000
-                        </div><br/>
-                        
-                    </div>
-                </div>
+                {% empty %}
+                    <p>You have not created any events yet...</p>
+                {% endfor %}
             </div>
         </div> 
         </div>
