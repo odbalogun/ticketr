@@ -15,7 +15,11 @@
     {% csrf_token %}
     <div class="form-wrap">
         <label for="">Name of Partner</label>
-        <input type="text" name="company" placeholder="Enter name of partner">
+        <!--<input type="text" name="company" placeholder="">-->
+        {{ form.company }}
+        {% for error in form.company.errors %}
+            <p>{{ error | escape }}</p>
+        {% endfor %}
     </div>
     <!--
     <div class="form-wrap">
@@ -25,19 +29,35 @@
     -->
     <div class="form-wrap">
         <label for="">Business Phone Number</label>
-        <input type="text" name="phone" placeholder="Enter business phone number">
+        <!--<input type="text" name="phone" placeholder="Enter business phone number">-->
+        {{ form.phone }}
+        {% for error in form.phone.errors %}
+            <p>{{ error | escape }}</p>
+        {% endfor %}
     </div>
     <div class="form-wrap">
         <label for="">Email</label>
-        <input type="email" name="email" placeholder="Enter Email">
+        <!--<input type="email" name="email" placeholder="Enter Email">-->
+        {{ form.email }}
+        {% for error in form.email.errors %}
+            <p>{{ error | escape }}</p>
+        {% endfor %}
     </div>
     <div class="form-wrap">
         <label for="">Password</label>
-        <input type="password" name="password" placeholder="Enter password">
+        <!--<input type="password" name="password" placeholder="Enter password">-->
+        {{ form.password }}
+        {% for error in form.password.errors %}
+            <p>{{ error | escape }}</p>
+        {% endfor %}
     </div>
     <div class="form-wrap">
         <label for="">Website</label>
-        <input type="text" name="website" placeholder="Enter website">
+        <!--<input type="text" name="website" placeholder="Enter website">-->
+        {{ form.website }}
+        {% for error in form.website.errors %}
+            <p>{{ error | escape }}</p>
+        {% endfor %}
     </div>
     <button type="submit">Create account</button>
 </form>

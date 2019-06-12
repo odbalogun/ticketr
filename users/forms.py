@@ -16,10 +16,12 @@ class UserModelForm(forms.ModelForm):
 
 
 class SignUpModelForm(forms.ModelForm):
-    company = forms.CharField(required=True)
-    phone = forms.CharField(required=True)
-    email = forms.EmailField(required=True)
-    password = forms.CharField(required=True, widget=forms.PasswordInput())
+    company = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter name of partner'}))
+    phone = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter business phone number'}))
+    email = forms.EmailField(required=True, max_length=50,
+                             widget=forms.EmailInput(attrs={'placeholder': 'Enter email'}))
+    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Enter password'}))
+    website = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'Enter website address'}))
 
     class Meta:
         model = User

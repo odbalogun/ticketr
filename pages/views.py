@@ -44,13 +44,19 @@ class HomePageView(TemplateView):
 
 # @user_not_authenticated
 class StandaloneLoginPageView(FormView):
+    success_url = settings.LOGIN_REDIRECT_URL
     template_name = "pages/login.html"
     form_class = LoginForm
 
 
 # @user_not_authenticated
-class StandaloneSignupPageView(TemplateView):
+class StandaloneSignupPageView(FormView):
+    form_class = SignUpModelForm
     template_name = "pages/signup.html"
+    email = None
+
+    def get_success_url(self):
+        return reverse_lazy('pages:verify', kwargs={'email': self.email})
 
 
 # @user_not_authenticated
@@ -64,9 +70,13 @@ class LoginPageView(LoginView):
 
     def form_invalid(self, form):
         # messages.error(self.request, "There were errors in your form")
-        key, value = form.errors.popitem()
-        messages.error(self.request, "{}: {}".format(key, value))
-        return redirect(reverse_lazy("pages:home"))
+        # key, value = form.errors.popitem()
+        # messages.error(self.request, "{}: {}".format(key, value))
+        if form.non_field_errors():
+            messages.error(self.request, form.non_field_errors()[0])
+        else:
+            messages.error(self.request, form.errors[0])
+        return redirect(reverse_lazy("pages:sign-in"))
 
 
 class LogoutPageView(LogoutView):
@@ -81,7 +91,7 @@ class SignupPageView(FormView):
     email = None
 
     def get(self, request, *args, **kwargs):
-        return redirect(reverse_lazy("pages:home"))
+        return redirect(reverse_lazy("pages:register"))
 
     def get_success_url(self):
         return reverse_lazy('pages:verify', kwargs={'email': self.email})
@@ -105,7 +115,7 @@ class SignupPageView(FormView):
 
     def form_invalid(self, form):
         messages.error(self.request, "There were errors in your form")
-        return redirect(reverse_lazy("pages:home"))
+        return redirect(reverse_lazy("pages:register"))
 
 
 class VerifyEmailView(FormView):
