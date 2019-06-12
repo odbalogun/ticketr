@@ -5,8 +5,6 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
 
-
-
 <div class="ticketr-signup standalone">
         <div class="logo">
             <img src="{% static 'images/ticketr_logo_transparent.png' %}" alt="">
@@ -48,10 +46,10 @@
             BY CREATING AN ACCOUNT, YOU AGREE TO THE TICKETR SERVICES AGREEMENT AND <a style="color: #333;" href="#"> <strong>TERMS OF SERVICE</strong> </a>
         </div>
         <div class="with-account">
-            Already registered? Please <a class="button" href="#">Sign in</a>
+            Already registered? Please <a class="button" href="{% url 'pages:sign-in' %}">Sign in</a>
         </div>
         <div class="without-account">
-            Looking to buy tickets? lets <a class="button" href="#">Shop tickets</a>
+            Looking to buy tickets? lets <a class="button" href="{% url 'events:list' %}">Shop tickets</a>
         </div>
     </div>
 </div>

@@ -4,22 +4,18 @@ from django.views.generic import TemplateView, FormView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from django.contrib.auth import login
-from .forms import VerificationCodeForm
+from .forms import VerificationCodeForm, LoginForm
 from deals.models import Deals
 from events.models import Category as EventCategory, Event
 from users.models import User
 from users.forms import SignUpModelForm
 from django.conf import settings
+from ticketr.decorators import user_not_authenticated
 
 
 class TestPageView(TemplateView):
     template_name = "pages/talent.html"
 
-class StandaloneLoginPageView(TemplateView):
-    template_name = "pages/login.html"
-
-class StandaloneSignupPageView(TemplateView):
-    template_name = "pages/signup.html"
 
 class ProfilePageView(TemplateView):
     template_name = "pages/profile.html"
@@ -46,6 +42,18 @@ class HomePageView(TemplateView):
         return render(request, 'pages/index.html', context)
 
 
+# @user_not_authenticated
+class StandaloneLoginPageView(FormView):
+    template_name = "pages/login.html"
+    form_class = LoginForm
+
+
+# @user_not_authenticated
+class StandaloneSignupPageView(TemplateView):
+    template_name = "pages/signup.html"
+
+
+# @user_not_authenticated
 class LoginPageView(LoginView):
     # success_url = reverse_lazy("users:profile")
     success_url = settings.LOGIN_REDIRECT_URL
@@ -63,9 +71,10 @@ class LoginPageView(LoginView):
 
 class LogoutPageView(LogoutView):
     template_name = 'pages/_logout.html'
-    next_page = reverse_lazy("pages:home")
+    next_page = reverse_lazy("pages:sign-in")
 
 
+# @user_not_authenticated
 class SignupPageView(FormView):
     form_class = SignUpModelForm
     template_name = 'pages/_signup.html'

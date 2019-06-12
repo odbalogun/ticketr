@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from .models import Event, Category
 from .forms import EventFormModel, TicketFormSet
 
@@ -26,6 +27,7 @@ def search_events(request):
                                                   'location': location})
 
 
+@login_required(login_url=reverse_lazy('pages:sign-in'))
 def create_event(request):
     event = Event(organizer=request.user, organizer_name=request.user.company)
 
@@ -67,6 +69,7 @@ class EventListView(ListView):
 class EventGetListByCategoryView(ListView):
     template_name = 'events/list_by_category.html'
     queryset = Event.objects.all()
+    category = None
 
     def get_queryset(self):
         self.category = get_object_or_404(Category, slug=self.kwargs['category_slug'])

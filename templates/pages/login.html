@@ -17,20 +17,22 @@
                                 {% csrf_token %}
                                 <div class="form-wrap">
                                     <label for="">Email</label>
-                                    <input type="text" name="username" placeholder="Enter your email">
+                                    <!--<input type="text" name="username" placeholder="Enter your email">-->
+                                    {{ form.username }}
                                 </div>
                                 <div class="form-wrap">
                                     <label for="">Password</label>
-                                    <input type="password" name="password" placeholder="Enter your password">
+                                    <!--<input type="password" name="password" placeholder="Enter your password">-->
+                                    {{ form.password }}
                                 </div>
                                 <button type="submit">Login</button>
                             </form>
                         </div><br><br>
                         <div class="with-account">
-                            Don't have an account? Please <a class="button" href="#">Sign up</a>
+                            Don't have an account? Please <a class="button" href="{% url 'pages:register' %}">Sign up</a>
                         </div>
                         <div class="without-account">
-                            Looking to buy tickets? lets <a class="button" href="#">Shop tickets</a>
+                            Looking to buy tickets? lets <a class="button" href="{% url 'events:list' %}">Shop tickets</a>
                         </div>
                     </div>
         </div>
