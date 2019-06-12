@@ -65,6 +65,11 @@ class EventListView(ListView):
     template_name = 'events/list.html'
     queryset = Event.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.order_by('name').all()
+        return context
+
 
 class EventGetListByCategoryView(ListView):
     template_name = 'events/list_by_category.html'

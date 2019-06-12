@@ -27,44 +27,36 @@
                 <div class="filter-section">
                     <form action="">
                         <select name="" id="">
-                            <option value="">Concert</option>
-                            <option value="">Sports</option>
-                            <option value="">Social</option>
-                            <option value="">Festival</option>
-                            <option value="">Fashion</option>
-                            <option value="">Night Life</option>
-                            <option value="">Technology</option>
-                            <option value="">Clubbing</option>
-                            <option value="">Shopping</option>
-                            <option value="">Religious</option>
-                            <option value="">Party</option>
-                            <option value="">Film</option>
-                            <option value="">Food</option>
-                            <option value="">Charity</option>
+                            <option value="">----</option>
+                            {% for cat in categories %}
+                            <option value="{{ cat.slug }}">{{ cat.name }}</option>
+                            {% endfor %}
                         </select>
                     </form>
                 </div>
                 <div class="content">
                     <div class="cards">
                         <div class="row">
-                            {% for x in x|rjust:10 %}
+                            {% for event in object_list %}
                             <div class="col-md-4">
                                 <div class="card-wrap">
-                                    <div class="card-img" style="background-image: url('{% static 'images/h1.jpg' %}')"></div>
+                                    <div class="card-img" style="background-image: url('{{ event.image.url }}')"></div>
                                     <div class="card-content-wrap">
-                                        <div class="card-title"><a href="#">My events great</a></div>
+                                        <div class="card-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></div>
                                         <div class="description">
-                                            <span><i class="far fa-calendar-alt"></i> </span> Tuesday, Jun 11th 2019
-                                        </div>
-                                        <div class="description">
-                                            <span><i class="far fa-clock"></i></span> 00:00 a.m.
+                                            <span><i class="far fa-calendar-alt"></i> </span> {{ event.start_date | date:'l, M jS  Y' }}
                                         </div>
                                         <div class="description">
-                                            <span><i class="fas fa-map-marker-alt"></i></span> Ilasan road, Lagos
+                                            <span><i class="far fa-clock"></i></span> {{ event.start_time | date:'H:i a' }}
                                         </div>
-                                        <div class="price">
-                                            <strong>Real great:</strong> NGN2,000.00
+                                        <div class="description">
+                                            <span><i class="fas fa-map-marker-alt"></i></span> {{ event.venue }}
                                         </div>
+                                        {% for ticket in event.tickets.all %}
+                                            <div class="price">
+                                                <strong>{{ ticket.name }}:</strong> {{ ticket.display_price }}
+                                            </div>
+                                        {% endfor %}
                                         <div class="btn-wrap">
                                             <a href="#" class="buy">Buy Ticket</a>
                                             <a href="/" class="buy">Share Details</a>
@@ -72,6 +64,8 @@
                                     </div>
                                 </div>
                             </div>
+                            {% empty %}
+                            <p>There are no events to display...</p>
                             {% endfor %}
                         </div>
                     </div>
