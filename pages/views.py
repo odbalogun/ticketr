@@ -10,15 +10,7 @@ from events.models import Category as EventCategory, Event
 from users.models import User
 from users.forms import SignUpModelForm
 from django.conf import settings
-from ticketr.decorators import user_not_authenticated
-
-
-class TestPageView(TemplateView):
-    template_name = "pages/talent.html"
-
-
-class ProfilePageView(TemplateView):
-    template_name = "pages/profile.html"
+# from ticketr.decorators import user_not_authenticated
 
 
 class CheckoutPageView(TemplateView):
