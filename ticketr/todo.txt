@@ -7,3 +7,7 @@ Tunde:
 
 
 Oduntan:
+    - fix emails
+    - integrate paystack
+    - fix cart
+    - add background job to remove events
