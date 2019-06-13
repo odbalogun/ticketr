@@ -25,50 +25,51 @@
                 <span>{{ object.end_time | time:"h:i A" | upper }}</span>
             </div>
         </div>
-        <div class="title">
-            <div class="line"></div>
+        <div class="title normal">
             <div class="text">TICKETS</div>
         </div>
     </div>
-</section>
 
-<section class="table">
-    <div class="container">
-        <table>
-            <tr class="header">
-                <th>Ticket Type</th>
-                <th>Ticket</th>
-                <th>Available QTY</th>
-                <th>QTY</th>
-            </tr>
-            <form action="">
-                {% for ticket in object.tickets.all %}
+    <section class="table">
+        <div class="container">
+            <table>
+                <tr class="header">
+                    <th>Ticket Type</th>
+                    <th>Ticket</th>
+                    <th>Available QTY</th>
+                    <th>QTY</th>
+                </tr>
+                <form action="">
+                    {% for ticket in object.tickets.all %}
+                    <tr>
+                        <td style="width: 40%;">{{ ticket.name }}</td>
+                        <td>N{{ ticket.price | intcomma }}</td>
+                        <td>{{ ticket.quantity }}</td>
+                        <td>
+                            <input type="number" size="5" />
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </form>
                 <tr>
-                    <td style="width: 40%;">{{ ticket.name }}</td>
-                    <td>N{{ ticket.price | intcomma }}</td>
-                    <td>{{ ticket.quantity }}</td>
+                    <td colspan="3">
+                        <ul class="payment-icon">
+                            <li><img src="{% static 'images/visa.png' %}" alt="visa"></li>
+                            <li><img src="{% static 'images/mastercard.png' %}" alt="master card"></li>
+                            <li><img src="{% static 'images/verve.png' %}" alt="verve"></li>
+                        </ul>
+                    </td>
                     <td>
-                        <input type="number" size="5" />
+                        <button>Checkout</button>
                     </td>
                 </tr>
-                {% endfor %}
-            </form>
-            <tr>
-                <td colspan="3">
-                    <ul class="payment-icon">
-                        <li><img src="{% static 'images/visa.png' %}" alt="visa"></li>
-                        <li><img src="{% static 'images/mastercard.png' %}" alt="master card"></li>
-                        <li><img src="{% static 'images/verve.png' %}" alt="verve"></li>
-                    </ul>
-                </td>
-                <td>
-                    <button>Checkout</button>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4"><a class="refund" href="#">REFUND POLICY</a></td>
-            </tr>
-        </table>
-    </div>
+                <tr>
+                    <td colspan="4"><a class="refund" href="#">REFUND POLICY</a></td>
+                </tr>
+            </table>
+        </div>
+    </section>
 </section>
+
+
 {% endblock %}
