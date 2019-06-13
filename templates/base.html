@@ -60,7 +60,7 @@
                                 <nav>
                                     <ul class="d-none d-lg-block">
                                         <li ng-class="{ active: isActive('/event')}"><a href="{% url 'events:list' %}">Events</a></li>
-                                        <li ng-class="{ active: isActive('/movies')}"><a href="{% url 'movies:list' %}">Movies tickets</a></li>
+                                        <li ng-class="{ active: isActive('/movies')}"><a href="{% url 'movies:list' %}">Movie tickets</a></li>
                                         <li ng-class="{ active: isActive('/buy-a-deal')}"><a href="{% url 'deals:list' %}">Buy a deal</a></li>
                                         <li ng-class="{ active: isActive('/book-a-talent')}"><a href="{% url 'talents:create-booking' %}">Book a talent</a></li>
                                         <li class="with-count"><a href="{% url 'pages:checkout' %}">Cart <span title="0">0</span> </a></li>
@@ -87,7 +87,7 @@
                     <ul>
                         <li><a class="close-me clearfix animate bounceIn"  href="{% url 'pages:home' %}"><span class="text">Home</span></a></li>
                         <li><a class="close-me clearfix animate bounceIn"  href="{% url 'events:list' %}"><span class="text">Event tickets</span></a></li>
-                        <li><a class="close-me clearfix animate bounceIn"  href="{% url 'movies:list' %}"><span class="text">Movies tickets</span></a></li>
+                        <li><a class="close-me clearfix animate bounceIn"  href="{% url 'movies:list' %}"><span class="text">Movie tickets</span></a></li>
                         <li><a class="close-me clearfix animate bounceIn"  href="{% url 'deals:list' %}"><span class="text">Buy a deal</span></a></li>
                         <li><a class="close-me clearfix animate bounceIn"  href="{% url 'talents:create-booking' %}"><span class="text">Book a talent</span></a></li>
                         {% if not request.user.is_authenticated %}
