@@ -159,7 +159,7 @@ header .menu-icon i {
 .banner {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 400px;
   background-position: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -776,6 +776,7 @@ header .menu-icon i {
   display: flex;
   margin-bottom: 40px;
   font-family: "ticketr";
+  position: relative;
 }
 .event-content .title .line {
   width: 30%;
@@ -796,6 +797,27 @@ header .menu-icon i {
   font-style: italic;
   font-weight: 100;
   padding: 0 5px;
+}
+.event-content .title.normal {
+  margin-bottom: 0;
+}
+.event-content .title.normal .text {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 20px 0 0 0;
+  margin: 20px 0 30px 0;
+  font-family: "gotham", sans-serif;
+  font-size: 22px;
+  position: relative;
+}
+.event-content .title.normal .text:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  border: 1px solid #ffbc36;
+  width: 60px;
+  left: 0;
 }
 .event-content .create-event-button-wrap {
   text-align: center;
@@ -865,7 +887,8 @@ header .menu-icon i {
   text-align: right;
   text-decoration: none;
 }
-.table table tr td input {
+.table table tr td input,
+.table table tr td select {
   width: 60px;
   background: #fff;
   border: 2px solid #9999997a;

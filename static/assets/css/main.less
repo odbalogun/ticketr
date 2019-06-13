@@ -171,7 +171,7 @@ header {
 .banner {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 400px;
   background-position: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -821,6 +821,7 @@ header {
     display: flex;
     margin-bottom: 40px;
     font-family: "ticketr";
+    position: relative;
     .line {
       width: 30%;
       border-top: 1px solid #ffbc36;
@@ -839,6 +840,27 @@ header {
         font-style: italic;
         font-weight: 100;
         padding: 0 5px;
+      }
+    }
+    &.normal{
+      margin-bottom: 0;
+      .text{
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 20px 0 0 0;
+        margin: 20px 0 30px 0;
+        font-family: "gotham", sans-serif;
+        font-size: 22px;
+        position: relative;
+        &:after{
+          content: "";
+          position: absolute;
+          bottom: -5px;
+          border: 1px solid #ffbc36;
+          width: 60px;
+          left: 0;
+        }
       }
     }
   }
@@ -912,7 +934,7 @@ header {
           text-align: right;
           text-decoration: none;
         }
-        input {
+        input, select {
           width: 60px;
           background: #fff;
           border: 2px solid #9999997a;
