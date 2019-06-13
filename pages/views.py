@@ -23,8 +23,8 @@ class HomePageView(TemplateView):
     def get(self, request, *args, **kwargs):
         context = {
             'deal': Deals.objects.last(),
-            'categories': EventCategory.objects.all()[:6],
-            'events': Event.objects.filter(image__isnull=False).order_by('-created_at')[:4]
+            'categories': EventCategory.objects.all()[:3],
+            'events': Event.objects.filter(image__isnull=False).order_by('-created_at')[:6]
         }
 
         return render(request, 'pages/index.html', context)
