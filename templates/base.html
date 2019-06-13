@@ -36,7 +36,11 @@
         <div id="page-wrapper">
             {% if messages %}
                 {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                    <div style="border-radius: 0; position: absolute; z-index: 10; right: 30px; top: 30px;" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {% else %}
                     <div style="border-radius: 0; position: absolute; z-index: 10; right: 30px; top: 30px;" class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {% endif %}
                         {{ message }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
@@ -188,7 +192,10 @@
                 pager: false,
                 touchEnabled: true
             });
-            $('.timepicker').timepicker();
+            $('.timepicker').timepicker({
+                timeFormat: 'H:i',
+                minTime: new Date(0,0,0,1,0,0)
+            });
                         
         </script>
         {% block extraJS %}{% endblock %}

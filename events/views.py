@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.utils.html import strip_tags
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
@@ -41,9 +42,10 @@ def create_event(request):
             # redirect
             return HttpResponseRedirect(reverse_lazy("events:detail", kwargs={'pk': event.pk}))
         else:
+            print(form.data['end_time'])
             if form.errors:
                 key, value = form.errors.popitem()
-                messages.error(request, "{}: {}".format(key, value))
+                messages.error(request, "{}: {}".format(form.fields[key].label, strip_tags(value)))
             elif ticket_set.errors:
                 print(ticket_set.errors)
                 key, value = ticket_set.errors.pop().popitem()
