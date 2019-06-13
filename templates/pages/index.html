@@ -124,13 +124,13 @@
             <div class="cards">
                 <div class="row">
                     {% for cat in deal.options.all %}
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card-wrap">
                             <div class="card-img" style="background-image: url('{{ cat.image.url }}')"></div>
                             <div class="card-content-wrap">
                                 <div class="card-title">Explore the city with our <strong>{{ cat.category.name }}</strong></div>
                                 <div class="description">
-                                    {{ cat.summary }}
+                                    {{ cat.summary }}...
                                 </div>
 
                                 <a class="read-more" href="#">Read More</a>
@@ -177,6 +177,52 @@
                         </div>
                     </div>
                     {% endfor %}
+
+                    <div class="col-md-4">
+                        <div class="card-wrap">
+                            <div class="card-img" style="background-image: url('{% static 'images/gift.jpeg' %}')">
+                                <div class="overlay">
+                                    <div class="card-title">Get the hottest deals</div>
+                                    <div class="description">
+                                        Get the hottest deals at the best prices
+                                    </div>
+
+                                    <a href="{% url 'deals:list' %}"><button class="buy">Get deals</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card-wrap">
+                            <div class="card-img" style="background-image: url('{% static 'images/party.jpg' %}')">
+                                <div class="overlay">
+                                    <div class="card-title">All the best events</div>
+                                    <div class="description">
+                                        Never miss out on the best events around town
+                                    </div>
+
+                                    <a href="{% url 'events:list' %}"><button class="buy">Buy tickets</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card-wrap">
+                            <div class="card-img" style="background-image: url('{% static 'images/movies.jpg' %}')">
+                                <div class="overlay">
+                                    <div class="card-title">Watch the latest movies!</div>
+                                    <div class="description">
+                                        Watch the latest movies as soon as they come out!
+                                    </div>
+
+                                    <a href="{% url 'movies:list' %}"><button class="buy">Get tickets</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
