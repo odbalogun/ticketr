@@ -27,7 +27,7 @@
                     {% for item in object.options.all %}
                     <div class="col-md-3">
                         <div class="card-wrap">
-                            <div class="card-img" style="background-image: url('{% static 'images/1.jpg' %}')">
+                            <div class="card-img" style="background-image: url('{{ item.image.url }}')">
                                 <div class="category">{{ item.category }}</div>
                             </div>
                             <div class="card-content-wrap">
