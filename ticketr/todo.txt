@@ -11,3 +11,5 @@ Oduntan:
     - integrate paystack
     - fix cart
     - add background job to remove events
+    - Make sure event dates are not before today
+    - Work on admin events
