@@ -15,7 +15,8 @@ class TicketForm(forms.ModelForm):
         }
 
 
-TicketFormSet = forms.inlineformset_factory(Event, Ticket, extra=10, form=TicketForm, can_delete=False, max_num=10)
+TicketFormSet = forms.inlineformset_factory(Event, Ticket, extra=1, form=TicketForm, can_delete=False, max_num=10)
+# TicketFormSet = forms.inlineformset_factory(Event, Ticket, form=TicketForm, can_delete=False, max_num=10)
 
 
 class EventFormModel(forms.ModelForm):

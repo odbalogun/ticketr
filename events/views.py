@@ -49,7 +49,7 @@ def create_event(request):
             elif ticket_set.errors:
                 print(ticket_set.errors)
                 key, value = ticket_set.errors.pop().popitem()
-                messages.error(request, "{}".format(key, value))
+                messages.error(request, "{}: {}".format(key, strip_tags(value)))
 
     else:
         form = EventFormModel(instance=event)

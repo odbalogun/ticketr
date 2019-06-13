@@ -165,6 +165,7 @@
 
                 $(wrapper).append(fieldHTML); //Add field html
                 x++; //Increment field counter
+                $("#id_talents-TOTAL_FORMS").val(x);
             }
         });
         
@@ -173,6 +174,7 @@
             e.preventDefault();
             $(this).parent('section').remove(); //Remove field html
             x--; //Decrement field counter
+            $("#id_talents-TOTAL_FORMS").val(x);
         });
     });
     </script>
