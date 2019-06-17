@@ -14,12 +14,12 @@
     <section>
     {% if search_term %}
         {% if location %}
-            <p>Showing results for "{{ search_term }}" in "{{ location }}"</p>
+            <h2>Showing results for "{{ search_term }}" in "{{ location }}"</h2>
         {% else %}
-            <p>Showing results for "{{ search_term }}"</p>
+            <h2>Showing results for "{{ search_term }}"</h2>
         {% endif %}
     {% elif location %}
-        <p>Showing results for events in "{{ location }}"</p>
+        <h2>Showing results for events in "{{ location }}"</h2>
     {% endif %}
     </section>
 

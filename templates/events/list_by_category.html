@@ -1,13 +1,72 @@
-{% block content %}
-    <br/>
-    <p>Showing results for {{ category }}</p>
-    <ul>
-        {% for item in object_list %}
-            <li><a href="{{ item.get_absolute_url }}">{{ item.pk }} - {{ item.title }} - {{ item.slug }}</a></li>
-        {% empty %}
-            <li>No events found</li>
-        {% endfor %}
-    </ul>
-    <hr/>
-    <a href="{% url 'events:create' %}">Create new event</a>
+{% extends 'base.html' %}
+{% load static %}
+{% block pagecontent %}
+    <section class="bxslider">
+        <div class="banner" style="background-image: url('{% static 'images/et.jpg' %}'); height: 450px;">
+            <div class="overlay">
+                <div class="container">
+                    <div class="first">Get <strong>your seat at all <br>the hottest events</strong> around! </div><br/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Showing results for {{ category }}</h2>
+    </section>
+
+    <section class="events">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="filter-section">
+                    <form action="">
+                        <select name="" id="">
+                            <option value="">----</option>
+                            {% for cat in categories %}
+                            <option value="{{ cat.slug }}">{{ cat.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
+                <div class="content">
+                    <div class="cards">
+                        <div class="row">
+                            {% for event in object_list %}
+                            <div class="col-md-4">
+                                <div class="card-wrap">
+                                    <div class="card-img" style="background-image: url('{{ event.image.url }}')"></div>
+                                    <div class="card-content-wrap">
+                                        <div class="card-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></div>
+                                        <div class="description">
+                                            <span><i class="far fa-calendar-alt"></i> </span> {{ event.start_date | date:'l, M jS  Y' }}
+                                        </div>
+                                        <div class="description">
+                                            <span><i class="far fa-clock"></i></span> {{ event.start_time | date:'H:i a' }}
+                                        </div>
+                                        <div class="description">
+                                            <span><i class="fas fa-map-marker-alt"></i></span> {{ event.venue }}
+                                        </div>
+                                        {% for ticket in event.tickets.all %}
+                                            <div class="price">
+                                                <strong>{{ ticket.name }}:</strong> {{ ticket.display_price }}
+                                            </div>
+                                        {% endfor %}
+                                        <div class="btn-wrap">
+                                            <a href="{{ event.get_absolute_url }}" class="buy">Buy Ticket</a>
+                                            <a href="/" class="buy">Share Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% empty %}
+                            <p>There are no events to display...</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
