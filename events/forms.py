@@ -34,3 +34,10 @@ class EventFormModel(forms.ModelForm):
             'other_details': forms.Textarea(attrs={'rows': 10})
         }
 
+
+class PurchaseTicketForm(forms.Form):
+    quantity = forms.IntegerField(min_value=0)
+    ticket_id = forms.IntegerField(widget=forms.HiddenInput)
+
+
+PurchaseTicketFormSet = forms.formset_factory(PurchaseTicketForm, max_num=10, can_delete=False)

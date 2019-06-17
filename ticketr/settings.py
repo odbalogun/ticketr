@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'pages',
     'newsletter',
     'cart',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media', # Allows use of MEDIA_URL in templates
+                'cart.context_processors.cart',
             ],
         },
     },

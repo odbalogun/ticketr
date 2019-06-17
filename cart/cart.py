@@ -55,6 +55,7 @@ class Cart(object):
         for key in self.cart.keys():
             for item in self.cart[key].values():
                 item['price'] = Decimal(item['price'])
+                item['item_type'] = key
                 item['total_price'] = item['price'] * item['quantity']
                 yield item
 
@@ -72,7 +73,7 @@ class Cart(object):
 
         product_id = str(product.id)
         if product_id not in self.cart[item_type]:
-            self.cart[item_type][product_id] = {'quantity': 0, 'price': product.price}
+            self.cart[item_type][product_id] = {'quantity': 0, 'price': str(product.price)}
 
         if update_quantity:
             self.cart[item_type][product_id]['quantity'] = quantity

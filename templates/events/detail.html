@@ -32,41 +32,46 @@
 
     <section class="table">
         <div class="container">
-            <table>
-                <tr class="header">
-                    <th>Ticket Type</th>
-                    <th>Ticket</th>
-                    <th>Available QTY</th>
-                    <th>QTY</th>
-                </tr>
-                <form action="">
+            <form action="{% url 'events:purchase-tickets' %}" method="post">
+                {% csrf_token %}
+                {{ purchase_form.management_form }}
+                <input type="hidden" name="form-TOTAL_FORMS" value="{{ object.tickets.count }}" id="id_form-TOTAL_FORMS">
+                <table>
+                    <tr class="header">
+                        <th>Ticket Type</th>
+                        <th>Ticket</th>
+                        <th>Available QTY</th>
+                        <th>QTY</th>
+                    </tr>
+
                     {% for ticket in object.tickets.all %}
                     <tr>
                         <td style="width: 40%;">{{ ticket.name }}</td>
                         <td>N{{ ticket.price | intcomma }}</td>
                         <td>{{ ticket.quantity }}</td>
                         <td>
-                            <input type="number" size="5" />
+                            <input type="number" name="form-{{ forloop.counter0 }}-quantity" size="5" />
+                            <input type="hidden" name="form-{{ forloop.counter0 }}-ticket_id" value="{{ ticket.id }}">
                         </td>
                     </tr>
                     {% endfor %}
-                </form>
-                <tr>
-                    <td colspan="3">
-                        <ul class="payment-icon">
-                            <li><img src="{% static 'images/visa.png' %}" alt="visa"></li>
-                            <li><img src="{% static 'images/mastercard.png' %}" alt="master card"></li>
-                            <li><img src="{% static 'images/verve.png' %}" alt="verve"></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <button>Checkout</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4"><a class="refund" href="#">REFUND POLICY</a></td>
-                </tr>
-            </table>
+                    <tr>
+                        <td colspan="3">
+                            <ul class="payment-icon">
+                                <li><img src="{% static 'images/visa.png' %}" alt="visa"></li>
+                                <li><img src="{% static 'images/mastercard.png' %}" alt="master card"></li>
+                                <li><img src="{% static 'images/verve.png' %}" alt="verve"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <button type="submit">Purchase tickets</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><a class="refund" href="#">REFUND POLICY</a></td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </section>
 </section>

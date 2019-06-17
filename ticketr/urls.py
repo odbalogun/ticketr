@@ -37,10 +37,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls', namespace='users')),
     path('deals/', include('deals.urls', namespace='deals')),
+    path('cart/', include('cart.urls', namespace='cart')),
     path('discounts/', include('discounts.urls', namespace='discounts')),
     path('talents/', include('talents.urls', namespace='talents')),
     path('events/', include('events.urls', namespace='events')),
     path('movies/', include('movies.urls', namespace='movies')),
+    path('orders/', include('orders.urls', namespace='orders')),
     path('my-admin/', include('newsletter.urls', namespace='newsletter')),
 ]
 
