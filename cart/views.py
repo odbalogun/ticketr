@@ -39,6 +39,11 @@ def cart_remove(request, item_type, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
+
+    if len(cart) == 0:
+        messages.error(request, 'There are no items in your cart')
+        return redirect('pages:home')
+
     for item in cart:
         item['update_quantity_form'] = CartAddItemForm(initial={'quantity': item['quantity'],
                                                                 'item_type': item['item_type'], 'update': True})

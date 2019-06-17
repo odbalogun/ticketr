@@ -47,7 +47,7 @@
                     {% for ticket in object.tickets.all %}
                     <tr>
                         <td style="width: 40%;">{{ ticket.name }}</td>
-                        <td>N{{ ticket.price | intcomma }}</td>
+                        <td>NGN{{ ticket.price | intcomma }}</td>
                         <td>{{ ticket.quantity }}</td>
                         <td>
                             <input type="number" name="form-{{ forloop.counter0 }}-quantity" size="5" />

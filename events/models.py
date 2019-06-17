@@ -80,6 +80,9 @@ class Event(SafeDeleteModel):
         unique_slugify(self, self.title)
         super(Event, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return "%s" % self.title
+
     @property
     def start_date_time(self):
         return datetime.datetime.combine(self.start_date, self.start_time)
@@ -101,6 +104,9 @@ class Ticket(SafeDeleteModel):
 
     class Meta:
         unique_together = ('event', 'name')
+
+    def __str__(self):
+        return "%s" % self.name
 
     @property
     def display_price(self):

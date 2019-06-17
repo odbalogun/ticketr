@@ -1,56 +1,76 @@
+{% extends 'base.html' %}
+{% load humanize %}
 {% load static %}
 
-{% block title %}
-  Your shopping cart
-{% endblock %}
+{% block pagecontent %}
 
-{% block content %}
-  <h1>Your shopping cart</h1>
-  <table class="cart">
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Remove</th>
-        <th>Unit price</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in cart %}
-        {% with product=item.product %}
-          <tr>
-            <td>
-              <a href="{{ product.get_absolute_url }}">
-                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'images/no_image.png' %}{% endif %}">
-              </a>
-            </td>
-            <td>{{ product.name }}</td>
-            <td>
-              <form action="{% url 'cart:add' product.id %}" method="post">
-                {{ item.update_quantity_form.quantity }}
-                {{ item.update_quantity_form.item_type }}
-                {{ item.update_quantity_form.update }}
-                <input type="submit" value="Update">
-                {% csrf_token %}
-              </form>
-            </td>
-            <td><a href="{% url 'cart:remove' item.item_type product.id %}">Remove</a></td>
-            <td class="num">${{ item.price }}</td>
-            <td class="num">${{ item.total_price }}</td>
-          </tr>
-        {% endwith %}
-      {% endfor %}
-      <tr class="total">
-        <td>Total</td>
-        <td colspan="4"></td>
-        <td class="num">${{ cart.get_total_price }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <p class="text-right">
-    <a href="#" class="button light">Continue shopping</a>
-    <a href="{% url 'orders:create' %}" class="button">Checkout</a>
-  </p>
+<section class="table" style="margin: 5em 0">
+    <div class="container">
+        <table>
+            <tr class="header">
+                <th>Item</th>
+                <th>Ticket Type</th>
+                <th>Fee</th>
+                <th>QTY</th>
+                <th></th>
+            </tr>
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <tr>
+                        <td>
+                            {% if item.item_type == 'events' %}
+                                {{ product.event }}
+                            {% elif item.item_type == 'deals' %}
+                                {{ product.deal }}
+                            {% else %}
+                                {{ product.movie }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ product }}
+                            <div class="more-info"> <a href="#">More Info</a></div>
+                        </td>
+                        <td>{{ product.display_price }}</td>
+                        <td>
+                            <form action="{% url 'cart:add' product.id %}" method="post">
+                                {{ item.update_quantity_form.quantity }}
+                                {{ item.update_quantity_form.item_type }}
+                                {{ item.update_quantity_form.update }}
+                                <button type="submit">Update</button>
+                                {% csrf_token %}
+                            </form>
+                        </td>
+                        <td><a href="{% url 'cart:remove' item.item_type product.id %}"><i class="fas fa-times"></i></a></td>
+                    </tr>
+                {% endwith %}
+            {% endfor %}
+            <tr>
+                <td colspan="3">
+                </td>
+                <td>
+                    Total
+                </td>
+                <td>NGN{{ cart.get_total_price | intcomma }}</td>
+
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <ul class="payment-icon">
+                        <li><img src="{% static 'images/visa.png' %}" alt="visa"></li>
+                        <li><img src="{% static 'images/mastercard.png' %}" alt="master card"></li>
+                        <li><img src="{% static 'images/verve.png' %}" alt="verve"></li>
+                    </ul>
+                </td>
+                <td>
+                    <!--<a href="{% url 'orders:create' %}"><button>Checkout</button></a> -->
+                    <a href="#"><button>Checkout</button></a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5"><a class="refund" href="#">REFUND POLICY</a></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
 {% endblock %}
