@@ -7,19 +7,18 @@ from .forms import DealForm, DealCategoriesFormSet
 from .models import Deals, DealCategories
 from django.views.decorators.http import require_POST
 from cart.cart import Cart
-from .forms import PurchaseDeal
+from .forms import PurchaseDealForm
 
 
 @require_POST
 def purchase_tickets(request):
     cart = Cart(request)
-    purchase_form = PurchaseDeal(request.POST)
+    form = PurchaseDealForm(request.POST)
 
-    if purchase_form.is_valid():
-        for row in purchase_form:
-            cd = row.cleaned_data
-            ticket = get_object_or_404(DealCategories, pk=cd['deal_id'])
-            cart.add(product=ticket, item_type='deals', quantity=cd.get('quantity'))
+    if form.is_valid():
+        cd = form.cleaned_data
+        ticket = get_object_or_404(DealCategories, pk=cd['deal_id'])
+        cart.add(product=ticket, item_type='deals', quantity=cd.get('quantity'))
 
         messages.success(request, "Your deals have been added to your cart")
         return HttpResponseRedirect(reverse_lazy("cart:checkout"))
@@ -42,6 +41,11 @@ class DealCreateView(CreateView):
 class DealListView(ListView):
     template_name = "deals/list.html"
     queryset = Deals.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = PurchaseDealForm()
+        return context
 
 
 class DealUpdateView(UpdateView):

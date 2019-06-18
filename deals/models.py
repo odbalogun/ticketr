@@ -61,7 +61,7 @@ class DealCategories(SafeDeleteModel):
 
     @property
     def summary(self):
-        return self.description[:50]
+        return self.description[:100]
 
     class Meta:
         unique_together = ('category', 'deal')

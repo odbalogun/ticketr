@@ -23,6 +23,6 @@ class DealForm(forms.ModelForm):
         ]
 
 
-class PurchaseDeal(forms.Form):
+class PurchaseDealForm(forms.Form):
     quantity = forms.IntegerField(required=True, min_value=1)
     deal_id = forms.IntegerField(required=True, min_value=1, widget=forms.HiddenInput)
