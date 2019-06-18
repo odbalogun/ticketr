@@ -21,3 +21,8 @@ class DealForm(forms.ModelForm):
         fields = [
             'name', 'description', 'expiry_date'
         ]
+
+
+class PurchaseDeal(forms.Form):
+    quantity = forms.IntegerField(required=True, min_value=1)
+    deal_id = forms.IntegerField(required=True, min_value=1, widget=forms.HiddenInput)
