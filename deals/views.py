@@ -1,21 +1,42 @@
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from django.views.generic import UpdateView, CreateView, ListView, DetailView, DeleteView
 from .forms import DealForm, DealCategoriesFormSet
 from .models import Deals, DealCategories
+from django.views.decorators.http import require_POST
+from cart.cart import Cart
+from .forms import PurchaseDeal
+
+
+@require_POST
+def purchase_tickets(request):
+    cart = Cart(request)
+    purchase_form = PurchaseDeal(request.POST)
+
+    if purchase_form.is_valid():
+        for row in purchase_form:
+            cd = row.cleaned_data
+            ticket = get_object_or_404(DealCategories, pk=cd['deal_id'])
+            cart.add(product=ticket, item_type='deals', quantity=cd.get('quantity'))
+
+        messages.success(request, "Your deals have been added to your cart")
+        return HttpResponseRedirect(reverse_lazy("cart:checkout"))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
 class DealCreateView(CreateView):
     form_class = DealForm
     template_name = "deals/create.html"
+    object = None
     # success_url = reverse_lazy("deals:manage-options", deal_id=object.id)
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.created_by = self.request.user
         self.object.save()
-        return HttpResponseRedirect(reverse_lazy("deals:manage-options", kwargs={'deal_id':self.object.pk}))
+        return HttpResponseRedirect(reverse_lazy("deals:manage-options", kwargs={'deal_id': self.object.pk}))
 
 
 class DealListView(ListView):
